@@ -3,200 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ثانوية بلس</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>ثانوية بلس - منصة تعليم الثانوية العامة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Cairo', sans-serif;
-      background-color: #f5c518;
-      color: #000;
-    }
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem;
-      background-color: #fff;
-      border-bottom: 2px solid #000;
-    }
-    .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: #000;
-      display: flex;
-      align-items: center;
-    }
-    .tagline {
-      background-color: #000;
-      color: #fff;
-      padding: 0.3rem 0.6rem;
-      border-radius: 8px;
-      margin-right: 0.5rem;
-      font-size: 0.9rem;
-    }
-    .auth-buttons {
-      display: flex;
-      flex-direction: row;
-      gap: 0.5rem;
-    }
-    .auth-buttons button {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 5px;
-      background-color: #000;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
-    .auth-buttons button:hover {
-      background-color: #333;
-    }
-    .menu-icon {
-      font-size: 1.5rem;
-      cursor: pointer;
-    }
-    .section {
-      text-align: center;
-      padding: 2rem 1rem;
-    }
-    .section h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-    .timer {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #000;
-      margin-bottom: 1.5rem;
-    }
-    .section-divider {
-      width: 80%;
-      margin: 1rem auto;
-      border-top: 2px solid #000;
-    }
-    .cards {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1rem;
-    }
-    .card {
-      background-color: #fff;
-      color: #000;
-      border: 2px solid #000;
-      border-radius: 12px;
-      width: 250px;
-      padding: 1rem;
-      text-align: center;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-    .card .label {
-      margin-top: 0.5rem;
-      font-size: 0.9rem;
-      background-color: #000;
-      color: #fff;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
-    }
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .auth-buttons {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
+  <!-- محتوى الهيدر -->
   <header>
-    <div class="logo">
-      ثانوية بلس 
-      <span class="tagline">دليلك الشامل للثانوية العامة</span>
-    </div>
+    <a href="index.html" class="logo">
+      ثانوية بلس
+      <span class="sticker">دليلك للثانوية العامة</span>
+    </a>
     <div class="auth-buttons">
-      <button onclick="location.href='login.html'">تسجيل الدخول</button>
-      <button onclick="location.href='signup.html'">إنشاء حساب</button>
+      <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+      <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
     </div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
+  
+  <!-- القائمة المتنقلة -->
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+    <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
+  </div>
 
-  <div class="section-divider"></div>
-
-  <section class="section">
-    <div class="timer" id="exam-timer"></div>
-    <h2>نبذة عن المنصة</h2>
-    <p>منصة شاملة لطلاب الصف الثالث الثانوي، توفر لك كل ما تحتاجه من كتب وامتحانات وخطط مذاكرة.</p>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section class="section">
-    <h2>أقسام الموقع</h2>
-    <div class="cards">
-      <div class="card" onclick="location.href='books.html'">
-        <h3>الكتب</h3>
-        <div class="label">كتب الوزارة + مراجعات</div>
-      </div>
-      <div class="card" onclick="location.href='exams.html'">
-        <h3>الامتحانات</h3>
-        <div class="label">سنوات سابقة</div>
-      </div>
-      <div class="card" onclick="location.href='plan.html'">
-        <h3>خطة المذاكرة</h3>
-        <div class="label">تنظيم وقتك</div>
-      </div>
-      <div class="card" onclick="location.href='about.html'">
-        <h3>عن المنصة</h3>
-        <div class="label">من نحن</div>
-      </div>
-      <div class="card" onclick="location.href='videos.html'">
-        <h3>الفيديوهات التعليمية</h3>
-        <div class="label">شرح المواد الثانوية</div>
-      </div>
-    </div>
-  </section>
-
-  <footer style="text-align:center; padding:1rem;">
-    <p>حقوق الملكية محفوظة &copy; 2023 ثانوية بلس</p>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      alert("هنا سيتم عرض قائمة الأقسام في الإصدارات القادمة.");
-    }
-
-    function startCountdown() {
-      const examDate = new Date("2025-06-15T08:00:00").getTime();
-      const timerElement = document.getElementById("exam-timer");
-
-      const x = setInterval(function () {
-        const now = new Date().getTime();
-        const distance = examDate - now;
-
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-
-        timerElement.innerHTML = `متبقي على الامتحانات: ${days} يوم، ${hours} ساعة، ${minutes} دقيقة`;
-
-        if (distance < 0) {
-          clearInterval(x);
-          timerElement.innerHTML = "بدأت امتحانات الثانوية العامة";
-        }
-      }, 1000);
-    }
-
-    startCountdown();
-  </script>
-</body>
-</html>
+  <main>
+    <!-- قسم العداد والنبذة -->
+    <div class="top-container">
+      <section class="timer-section">
+        <h2><i class="fas fa-clock" style="margin-left: 10px;"></i> العد التنازلي للامتحانات</h2>
+        <div class="timer" id="exam-timer"></div>
+      </section>
+      
+      <section class="about-section">
+        <h2><i class="fas fa-info-circle" style="margin-left: 10px;"></i> نب
