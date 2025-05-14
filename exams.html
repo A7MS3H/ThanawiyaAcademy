@@ -2,31 +2,62 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>الامتحانات</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الامتحانات - ثانوية بلس</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-yellow-200">
-  <header class="bg-yellow-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold">🎓 قسم الامتحانات</h1>
+<body>
+  <!-- الهيدر -->
+  <header>
+    <h1>ثانوية بلس</h1>
+    <span id="menu-btn">☰</span>
   </header>
 
-  <!-- Main Content -->
-  <main class="p-4">
-    <section class="bg-white p-4 rounded-2xl shadow">
-      <h3 class="text-lg font-semibold mb-2">📝 اختر المادة:</h3>
-      <ul class="space-y-2">
-        <li><a href="math-exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">رياضيات</a></li>
-        <li><a href="chemistry-exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">كيمياء</a></li>
-        <li><a href="physics-exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">فيزياء</a></li>
-        <li><a href="literature-exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">أدب</a></li>
-      </ul>
-    </section>
-  </main>
+  <!-- القائمة الجانبية -->
+  <nav id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id="close-btn">&times;</a>
+    <a href="index.html">الرئيسية</a>
+    <a href="books.html">الكتب</a>
+    <a href="exams.html">الامتحانات</a>
+    <a href="plan.html">خطة المذاكرة</a>
+    <a href="about.html">عن المنصة</a>
+  </nav>
 
-  <footer class="bg-yellow-600 text-white p-4 text-center">
-    <p>جميع الحقوق محفوظة &copy; ثانوية بلس 2025</p>
-  </footer>
+  <!-- محتوى الصفحة -->
+  <div class="content">
+    <h2>قسم الامتحانات</h2>
+
+    <p>📝 اختر المادة لرؤية الامتحانات حسب السنين:</p>
+
+    <div class="subjects">
+      <div class="subject-card">
+        <h3>اللغة العربية</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <div class="subject-card">
+        <h3>اللغة الإنجليزية</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <div class="subject-card">
+        <h3>الفيزياء</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <div class="subject-card">
+        <h3>الكيمياء</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <div class="subject-card">
+        <h3>الأحياء</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <div class="subject-card">
+        <h3>الرياضيات</h3>
+        <a href="#">امتحانات السنوات السابقة</a>
+      </div>
+      <!-- تقدر تضيف باقي المواد بنفس الشكل -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
