@@ -2,59 +2,50 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>خطة المذاكرة - ثانوية بلس</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- روابط CSS كما في الصفحة الرئيسية -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/plan.css" />
 </head>
 <body>
-  <!-- الهيدر -->
-  <header>
-    <h1>ثانوية بلس</h1>
-    <span id="menu-btn">☰</span>
-  </header>
+  <!-- نفس الهيدر كما في الصفحة الرئيسية -->
+  
+  <main>
+    <section class="main-sections">
+      <h2><i class="fas fa-calendar-alt" style="margin-left: 10px;"></i> خطة المذاكرة</h2>
+      <div class="section-divider"></div>
+      
+      <div class="plan-container">
+        <div class="plan-options">
+          <button class="plan-btn active" data-plan="weekly">أسبوعية</button>
+          <button class="plan-btn" data-plan="monthly">شهرية</button>
+          <button class="plan-btn" data-plan="subject">حسب المادة</button>
+        </div>
+        
+        <div class="plan-content">
+          <div class="weekly-plan active">
+            <h3>الخطة الأسبوعية</h3>
+            <!-- محتوى الخطة الأسبوعية -->
+          </div>
+          
+          <div class="monthly-plan">
+            <h3>الخطة الشهرية</h3>
+            <!-- محتوى الخطة الشهرية -->
+          </div>
+          
+          <div class="subject-plan">
+            <h3>حسب المادة</h3>
+            <!-- محتوى الخطة حسب المادة -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- القائمة الجانبية -->
-  <nav id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" id="close-btn">&times;</a>
-    <a href="index.html">الرئيسية</a>
-    <a href="books.html">الكتب</a>
-    <a href="exams.html">الامتحانات</a>
-    <a href="plan.html">خطة المذاكرة</a>
-    <a href="about.html">عن المنصة</a>
-  </nav>
-
-  <!-- محتوى الصفحة -->
-  <div class="content">
-    <!-- التايمر -->
-    <div id="timer"></div>
-
-    <!-- العنوان -->
-    <h2>خطة المذاكرة</h2>
-
-    <!-- محتوى الخطة -->
-    <div class="plan-section">
-      <p>📌 إليك خطة مذاكرة مخصصة لطلاب الصف الثالث الثانوي تساعدك على تنظيم وقتك:</p>
-
-      <ul>
-        <li>🗓️ من السبت إلى الخميس: 
-          <ul>
-            <li>3 ساعات مذاكرة صباحًا</li>
-            <li>مراجعة مادة مختلفة كل يوم</li>
-            <li>حل تدريبات ومتابعة فيديوهات شرح</li>
-          </ul>
-        </li>
-        <li>📚 الجمعة: 
-          <ul>
-            <li>مراجعة سريعة لأهم النقاط</li>
-            <li>حل نموذج امتحان كامل</li>
-          </ul>
-        </li>
-      </ul>
-
-      <p>🎯 الهدف من الخطة هو الالتزام اليومي بدون ضغط زائد، والمراجعة التراكمية.</p>
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <!-- نفس الفوتر كما في الصفحة الرئيسية -->
+  
+  <script src="js/script.js"></script>
+  <script src="js/plan.js"></script>
 </body>
 </html>
