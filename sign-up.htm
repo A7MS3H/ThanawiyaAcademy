@@ -1,38 +1,54 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>إنشاء حساب</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>إنشاء حساب - ثانوية بلس</title>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script> <!-- تأكد من ربط الملف firebase-config.js هنا -->
 </head>
 <body>
-  <h1>إنشاء حساب</h1>
-  <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-  <input type="password" id="password" placeholder="كلمة المرور" required>
-  <button id="signUpBtn">إنشاء حساب</button>
 
-  <script src="firebase-config.js"></script>
+  <header>
+    <h1>🎓 ثانوية بلس</h1>
+    <nav>
+      <a href="index.html">الصفحة الرئيسية</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>إنشاء حساب جديد</h2>
+    <form id="signup-form">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required><br><br>
+      <label for="password">كلمة السر:</label>
+      <input type="password" id="password" required><br><br>
+      <button type="submit">إنشاء حساب</button>
+    </form>
+    <p>هل لديك حساب؟ <a href="login.html">تسجيل الدخول</a></p>
+  </main>
+
   <script>
-    const signUpBtn = document.getElementById('signUpBtn');
+    // إنشاء حساب جديد باستخدام Firebase
+    const signupForm = document.getElementById("signup-form");
 
-    signUpBtn.addEventListener('click', () => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-      // إنشاء حساب جديد عبر Firebase
-      createUserWithEmailAndPassword(auth, email, password)
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          alert("تم إنشاء الحساب بنجاح");
-          window.location.href = "login.html"; // إعادة توجيه إلى صفحة تسجيل الدخول بعد إنشاء الحساب
+          // تم إنشاء الحساب بنجاح
+          window.location.href = "index.html"; // أو الانتقال إلى صفحة مخصصة بعد إنشاء الحساب بنجاح
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(`خطأ: ${errorMessage}`); // عرض رسالة الخطأ إذا فشل إنشاء الحساب
+          alert("فشل إنشاء الحساب: " + error.message);
         });
     });
   </script>
+
 </body>
 </html>
