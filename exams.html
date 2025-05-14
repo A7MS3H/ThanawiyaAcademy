@@ -2,62 +2,51 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>الامتحانات - ثانوية بلس</title>
-  <link rel="stylesheet" href="style.css" />
+  <!-- روابط CSS كما في الصفحة الرئيسية -->
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <!-- الهيدر -->
-  <header>
-    <h1>ثانوية بلس</h1>
-    <span id="menu-btn">☰</span>
-  </header>
+  <!-- نفس الهيدر كما في الصفحة الرئيسية -->
+  
+  <main>
+    <section class="main-sections">
+      <h2><i class="fas fa-file-alt" style="margin-left: 10px;"></i> نماذج الامتحانات</h2>
+      <div class="section-divider"></div>
+      
+      <div class="exams-container">
+        <div class="exam-filters">
+          <select id="year-filter">
+            <option value="all">كل السنوات</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+          </select>
+          
+          <select id="subject-filter">
+            <option value="all">كل المواد</option>
+            <option value="math">الرياضيات</option>
+            <option value="physics">الفيزياء</option>
+          </select>
+        </div>
+        
+        <div class="exams-grid">
+          <div class="exam-item">
+            <h3>امتحان الرياضيات 2023</h3>
+            <div class="exam-meta">
+              <span><i class="fas fa-calendar-alt"></i> 15 يونيو 2023</span>
+              <span><i class="fas fa-file-pdf"></i> PDF</span>
+            </div>
+            <button class="view-btn">عرض الامتحان</button>
+          </div>
+          <!-- المزيد من الامتحانات -->
+        </div>
+      </div>
+    </section>
+  </main>
 
-  <!-- القائمة الجانبية -->
-  <nav id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" id="close-btn">&times;</a>
-    <a href="index.html">الرئيسية</a>
-    <a href="books.html">الكتب</a>
-    <a href="exams.html">الامتحانات</a>
-    <a href="plan.html">خطة المذاكرة</a>
-    <a href="about.html">عن المنصة</a>
-  </nav>
-
-  <!-- محتوى الصفحة -->
-  <div class="content">
-    <h2>قسم الامتحانات</h2>
-
-    <p>📝 اختر المادة لرؤية الامتحانات حسب السنين:</p>
-
-    <div class="subjects">
-      <div class="subject-card">
-        <h3>اللغة العربية</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <div class="subject-card">
-        <h3>اللغة الإنجليزية</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <div class="subject-card">
-        <h3>الفيزياء</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <div class="subject-card">
-        <h3>الكيمياء</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <div class="subject-card">
-        <h3>الأحياء</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <div class="subject-card">
-        <h3>الرياضيات</h3>
-        <a href="#">امتحانات السنوات السابقة</a>
-      </div>
-      <!-- تقدر تضيف باقي المواد بنفس الشكل -->
-    </div>
-  </div>
-
-  <script src="script.js"></script>
+  <!-- نفس الفوتر كما في الصفحة الرئيسية -->
+  
+  <script src="js/script.js"></script>
 </body>
 </html>
