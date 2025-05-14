@@ -2,115 +2,64 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>إنشاء حساب - ثانوية بلس</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    .signup-container {
-      max-width: 400px;
-      margin: 100px auto;
-      background-color: #fff;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-
-    .signup-container h2 {
-      text-align: center;
-      margin-bottom: 20px;
-      color: #222;
-    }
-
-    .signup-container input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    .signup-container button {
-      width: 100%;
-      padding: 12px;
-      background-color: #222;
-      color: #fff;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-    }
-
-    .signup-container button:hover {
-      background-color: #444;
-    }
-
-    .login-link {
-      text-align: center;
-      margin-top: 15px;
-    }
-
-    .login-link a {
-      color: #007bff;
-      text-decoration: none;
-    }
-  </style>
+  <!-- روابط CSS كما في الصفحة الرئيسية -->
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/auth.css" />
 </head>
-<body>
-
-  <div class="signup-container">
-    <h2>إنشاء حساب جديد</h2>
-    <form id="signup-form">
-      <input type="text" id="fullName" placeholder="الاسم الكامل" required />
-      <input type="text" id="username" placeholder="اسم المستخدم" required />
-      <input type="email" id="email" placeholder="البريد الإلكتروني" required />
-      <input type="password" id="password" placeholder="كلمة المرور" required />
-      <button type="submit">تسجيل</button>
-    </form>
-
-    <div class="login-link">
-      لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+<body class="auth-page">
+  <div class="auth-container">
+    <div class="auth-logo">
+      <a href="index.html">
+        <h1><i class="fas fa-graduation-cap"></i> ثانوية بلس</h1>
+      </a>
+    </div>
+    
+    <div class="auth-form">
+      <h2>إنشاء حساب جديد</h2>
+      
+      <form id="signupForm">
+        <div class="form-group">
+          <label for="fullname">الاسم بالكامل</label>
+          <input type="text" id="fullname" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">البريد الإلكتروني</label>
+          <input type="email" id="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="password">كلمة المرور</label>
+          <input type="password" id="password" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="confirm-password">تأكيد كلمة المرور</label>
+          <input type="password" id="confirm-password" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="grade">الصف الدراسي</label>
+          <select id="grade" required>
+            <option value="">اختر الصف</option>
+            <option value="first">الصف الأول الثانوي</option>
+            <option value="second">الصف الثاني الثانوي</option>
+            <option value="third">الصف الثالث الثانوي</option>
+          </select>
+        </div>
+        
+        <button type="submit" class="auth-btn">إنشاء حساب</button>
+      </form>
+      
+      <div class="auth-links">
+        <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
+      </div>
     </div>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyAcJWsvImyzZRWxL0KiH0vvio27XT1Crxk",
-      authDomain: "a7msah.firebaseapp.com",
-      projectId: "a7msah",
-      storageBucket: "a7msah.appspot.com",
-      messagingSenderId: "1023230008677",
-      appId: "1:1023230008677:web:1e412cfb69df986569958c",
-      measurementId: "G-M0BB2JLYX3"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    const signupForm = document.getElementById("signup-form");
-
-    signupForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-
-      const fullName = document.getElementById("fullName").value;
-      const username = document.getElementById("username").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-
-      try {
-        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-        await updateProfile(userCredential.user, {
-          displayName: fullName + " | " + username
-        });
-        alert("تم إنشاء الحساب بنجاح ✅");
-        window.location.href = "index.html";
-      } catch (error) {
-        alert("حدث خطأ: " + error.message);
-      }
-    });
-  </script>
-
+  <script src="js/script.js"></script>
+  <script src="js/auth.js"></script>
 </body>
 </html>
