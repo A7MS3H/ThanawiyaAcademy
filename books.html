@@ -1,44 +1,59 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>الكتب - ثانوية بلس</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>الكتب الخارجية - ثانوية بلس</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
   <header>
-    <h1>ثانوية بلس</h1>
-    <span id="menu-btn">☰</span>
-  </header>
-
-  <nav id="mySidenav" class="sidenav">
-    <a href="javascript:void(0)" id="close-btn">&times;</a>
-    <a href="books.html">الكتب</a>
-    <a href="exams.html">الامتحانات</a>
-    <a href="plan.html">خطة المذاكرة</a>
-    <a href="about.html">عن المنصة</a>
-  </nav>
-
-  <div class="content">
-    <h2>الكتب</h2>
-    <div class="books-section">
-      <h3>كتب الوزارة</h3>
-      <ul>
-        <li>رياضيات</li>
-        <li>علوم</li>
-        <li>لغة عربية</li>
-        <!-- وهكذا -->
-      </ul>
-      <h3>مراجعات نهائية</h3>
-      <ul>
-        <li>مراجعة في الكيمياء</li>
-        <li>مراجعة في الفيزياء</li>
-        <!-- ... -->
-      </ul>
+    <a href="index.html" class="logo">
+      ثانوية بلس
+      <span class="sticker">الكتب الخارجية</span>
+    </a>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+      <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
     </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+    <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
   </div>
 
-  <script src="script.js"></script>
+  <main>
+    <section class="main-sections">
+      <h2><i class="fas fa-book" style="margin-left: 10px;"></i> الكتب الخارجية</h2>
+      <div class="section-divider"></div>
+      
+      <div class="books-container">
+        <!-- محتوى الكتب سيتم إضافته هنا -->
+        <div class="book-category">
+          <h3>الصف الثالث الثانوي</h3>
+          <div class="books-grid">
+            <div class="book-item">
+              <img src="images/math-book.jpg" alt="كتاب الرياضيات">
+              <h4>الرياضيات المتقدمة</h4>
+              <button class="download-btn">تحميل الكتاب</button>
+            </div>
+            <!-- المزيد من الكتب -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>حقوق الملكية محفوظة &copy; <span id="year"></span> ثانوية بلس</p>
+  </footer>
+
+  <script src="js/script.js"></script>
 </body>
 </html>
