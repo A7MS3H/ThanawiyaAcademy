@@ -1,38 +1,54 @@
-
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>تسجيل الدخول</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>تسجيل الدخول - ثانوية بلس</title>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+  <script src="firebase-config.js"></script> <!-- تأكد من ربط الملف firebase-config.js هنا -->
 </head>
 <body>
-  <h1>تسجيل الدخول</h1>
-  <input type="email" id="email" placeholder="البريد الإلكتروني" required>
-  <input type="password" id="password" placeholder="كلمة المرور" required>
-  <button id="loginBtn">تسجيل الدخول</button>
-  <script src="firebase-config.js"></script>
+
+  <header>
+    <h1>🎓 ثانوية بلس</h1>
+    <nav>
+      <a href="index.html">الصفحة الرئيسية</a>
+    </nav>
+  </header>
+
+  <main>
+    <h2>تسجيل الدخول</h2>
+    <form id="login-form">
+      <label for="email">البريد الإلكتروني:</label>
+      <input type="email" id="email" required><br><br>
+      <label for="password">كلمة السر:</label>
+      <input type="password" id="password" required><br><br>
+      <button type="submit">تسجيل الدخول</button>
+    </form>
+    <p>لا تملك حساب؟ <a href="signup.html">إنشاء حساب</a></p>
+  </main>
+
   <script>
-    const loginBtn = document.getElementById('loginBtn');
+    // التحقق من بيانات الدخول باستخدام Firebase
+    const loginForm = document.getElementById("login-form");
+    
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
 
-    loginBtn.addEventListener('click', () => {
-      const email = document.getElementById('email').value;
-      const password = document.getElementById('password').value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
 
-      // تسجيل الدخول عبر Firebase
-      signInWithEmailAndPassword(auth, email, password)
+      firebase.auth().signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
-          const user = userCredential.user;
-          alert("تم تسجيل الدخول بنجاح");
-          window.location.href = "index.html"; // إعادة توجيه إلى الصفحة الرئيسية بعد النجاح
+          // تسجيل الدخول بنجاح
+          window.location.href = "index.html"; // أو الانتقال إلى صفحة مخصصة بعد الدخول الناجح
         })
         .catch((error) => {
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          alert(`خطأ: ${errorMessage}`); // عرض رسالة الخطأ إذا فشل تسجيل الدخول
+          alert("فشل تسجيل الدخول: " + error.message);
         });
     });
   </script>
+
 </body>
 </html>
