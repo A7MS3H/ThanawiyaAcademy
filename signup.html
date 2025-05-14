@@ -2,41 +2,115 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>إنشاء حساب</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>إنشاء حساب - ثانوية بلس</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .signup-container {
+      max-width: 400px;
+      margin: 100px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    .signup-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #222;
+    }
+
+    .signup-container input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .signup-container button {
+      width: 100%;
+      padding: 12px;
+      background-color: #222;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .signup-container button:hover {
+      background-color: #444;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .login-link a {
+      color: #007bff;
+      text-decoration: none;
+    }
+  </style>
 </head>
-<body class="bg-yellow-200">
+<body>
 
-  <header class="bg-yellow-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold">🎓 إنشاء حساب جديد</h1>
-  </header>
+  <div class="signup-container">
+    <h2>إنشاء حساب جديد</h2>
+    <form id="signup-form">
+      <input type="text" id="fullName" placeholder="الاسم الكامل" required />
+      <input type="text" id="username" placeholder="اسم المستخدم" required />
+      <input type="email" id="email" placeholder="البريد الإلكتروني" required />
+      <input type="password" id="password" placeholder="كلمة المرور" required />
+      <button type="submit">تسجيل</button>
+    </form>
 
-  <main class="p-4">
-    <section class="bg-white p-6 rounded-2xl shadow">
-      <h3 class="text-xl font-semibold mb-4">📋 ادخل بياناتك</h3>
-      <form action="#" method="POST">
-        <div class="mb-4">
-          <label for="username" class="block text-lg">اسم المستخدم</label>
-          <input type="text" id="username" name="username" required class="w-full p-2 border rounded">
-        </div>
-        <div class="mb-4">
-          <label for="email" class="block text-lg">البريد الإلكتروني</label>
-          <input type="email" id="email" name="email" required class="w-full p-2 border rounded">
-        </div>
-        <div class="mb-4">
-          <label for="password" class="block text-lg">كلمة المرور</label>
-          <input type="password" id="password" name="password" required class="w-full p-2 border rounded">
-        </div>
-        <button type="submit" class="w-full bg-yellow-500 text-white p-3 rounded hover:bg-yellow-600">إنشاء حساب</button>
-      </form>
-    </section>
-  </main>
+    <div class="login-link">
+      لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a>
+    </div>
+  </div>
 
-  <footer class="bg-yellow-600 text-white p-4 text-center">
-    <p>جميع الحقوق محفوظة &copy; ثانوية بلس 2025</p>
-  </footer>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAcJWsvImyzZRWxL0KiH0vvio27XT1Crxk",
+      authDomain: "a7msah.firebaseapp.com",
+      projectId: "a7msah",
+      storageBucket: "a7msah.appspot.com",
+      messagingSenderId: "1023230008677",
+      appId: "1:1023230008677:web:1e412cfb69df986569958c",
+      measurementId: "G-M0BB2JLYX3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const signupForm = document.getElementById("signup-form");
+
+    signupForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+
+      const fullName = document.getElementById("fullName").value;
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(userCredential.user, {
+          displayName: fullName + " | " + username
+        });
+        alert("تم إنشاء الحساب بنجاح ✅");
+        window.location.href = "index.html";
+      } catch (error) {
+        alert("حدث خطأ: " + error.message);
+      }
+    });
+  </script>
 
 </body>
 </html>
