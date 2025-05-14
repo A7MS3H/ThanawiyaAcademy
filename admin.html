@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>لوحة التحكم - ثانوية بلس</title>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
+  <script src="firebase.js"></script> <!-- استيراد الكود الذي وضعت في الأعلى -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f5c518;
+      color: #333;
+      padding: 20px;
+    }
+    .admin-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    .input-group {
+      margin-bottom: 1rem;
+    }
+    .input-group label {
+      display: block;
+      font-weight: bold;
+    }
+    .input-group input, .input-group textarea {
+      width: 100%;
+      padding: 0.5rem;
+      margin-top: 0.3rem;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+    .submit-btn {
+      padding: 0.5rem 2rem;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .submit-btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="admin-container">
+    <h2>لوحة التحكم - تعديل الصفحات</h2>
+
+    <div class="input-group">
+      <label for="aboutText">نبذة عن المنصة</label>
+      <textarea id="aboutText" rows="4" placeholder="أدخل النص هنا..."></textarea>
+    </div>
+
+    <div class="input-group">
+      <label for="timerText">نص التايمر</label>
+      <input type="text" id="timerText" placeholder="أدخل النص هنا...">
+    </div>
+
+    <button class="submit-btn" onclick="saveContent()">حفظ التغييرات</button>
+  </div>
+
+  <script>
+    // Function to save data to Firebase
+    function saveContent() {
+      const aboutText = document.getElementById('aboutText').value;
+      const timerText = document.getElementById('timerText').value;
+
+      db.collection('siteContent').doc('homePage').set({
+        about: aboutText,
+        timer: timerText
+      }).then(() => {
+        alert('تم حفظ التغييرات بنجاح!');
+      }).catch(error => {
+        console.error('خطأ أثناء حفظ التغييرات: ', error);
+      });
+    }
+
+    // Function to load existing content from Firebase (when the page is loaded)
+    window.onload = function() {
+      db.collection('siteContent').doc('homePage').get().then(doc => {
+        if (doc.exists) {
+          document.getElementById('aboutText').value = doc.data().about || '';
+          document.getElementById('timerText').value = doc.data().timer || '';
+        }
+      }).catch(error => {
+        console.error('خطأ أثناء تحميل البيانات: ', error);
+      });
+    }
+  </script>
+
+</body>
+</html>
