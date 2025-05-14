@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ثانوية بلس - الكتب الخارجية</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f5c518;
+      --secondary: #000;
+      --white: #fff;
+      --text: #333;
+      --hover: #333;
+      --section-bg: rgba(255, 255, 255, 0.95);
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1470&auto=format&fit=crop');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--secondary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--secondary);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .logo:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .sticker {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+    
+    .auth-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .auth-buttons button {
+      padding: 0.6rem 1.2rem;
+      border: 2px solid var(--secondary);
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+    }
+    
+    .login-btn {
+      background-color: transparent;
+      color: var(--secondary);
+    }
+    
+    .login-btn:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .signup-btn {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .signup-btn:hover {
+      background-color: transparent;
+      color: var(--secondary);
+    }
+    
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .menu-icon.active {
+      transform: rotate(90deg);
+    }
+    
+    /* أنماط صفحة الكتب */
+    .main-sections {
+      background-color: var(--section-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      width: 90%;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    .books-container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+    
+    .book-category {
+      margin-bottom: 3rem;
+      text-align: right;
+    }
+    
+    .books-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    
+    .book-item {
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 12px;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+      text-align: right;
+    }
+    
+    .book-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .book-cover {
+      width: 100%;
+      height: 200px;
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #ccc;
+    }
+    
+    .download-btn {
+      width: 100%;
+      padding: 0.8rem;
+      background-color: var(--secondary);
+      color: var(--white);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 1rem;
+    }
+    
+    .download-btn:hover {
+      background-color: var(--hover);
+    }
+    
+    footer {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .auth-buttons {
+        display: none;
+      }
+      
+      .menu-icon {
+        display: block;
+      }
+      
+      .books-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 70%;
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 0 0 0 10px;
+      padding: 1rem;
+      z-index: 99;
+      box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-menu.active {
+      display: block;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from { transform: translateX(100%); }
+      to { transform: translateX(0); }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      ثانوية بلس
+      <span class="sticker">الكتب الخارجية</span>
+    </a>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+      <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+  </header>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="login-btn" onclick="location.href='login.html'">تسجيل الدخول</button>
+    <button class="signup-btn" onclick="location.href='signup.html'">إنشاء حساب</button>
+  </div>
+
+  <main>
+    <section class="main-sections">
+      <h2><i class="fas fa-book" style="margin-left: 10px;"></i> الكتب الخارجية</h2>
+      
+      <div class="books-container">
+        <!-- قسم كتب الرياضيات -->
+        <div class="book-category">
+          <h3>الرياضيات</h3>
+          <div class="books-grid">
+            <div class="book-item">
+              <div class="book-cover">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h4>الرياضيات المتقدمة</h4>
+              <p>إعداد: د. أحمد محمد - نسخة 2024</p>
+              <button class="download-btn" onclick="window.open('https://example.com/math-book1.pdf', '_blank')">
+                <i class="fas fa-download"></i> تحميل الكتاب
+              </button>
+            </div>
+            
+            <div class="book-item">
+              <div class="book-cover">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h4>الرياضيات للثانوية العامة</h4>
+              <p>إعداد: دار النشر التعليمية</p>
+              <button class="download-btn" onclick="window.open('https://example.com/math-book2.pdf', '_blank')">
+                <i class="fas fa-download"></i> تحميل الكتاب
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <!-- قسم الكيمياء -->
+        <div class="book-category">
+          <h3>الكيمياء</h3>
+          <div class="books-grid">
+            <div class="book-item">
+              <div class="book-cover">
+                <i class="fas fa-book-open"></i>
+              </div>
+              <h4>الكيمياء الحديثة</h4>
+              <p>إعداد: أ. محمد علي</p>
+              <button class="download-btn" onclick="window.open('https://example.com/chemistry-book1.pdf', '_blank')">
+                <i class="fas fa-download"></i> تحميل الكتاب
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>حقوق الملكية محفوظة &copy; <span id="year"></span> ثانوية بلس</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      mobileMenu.classList.toggle("active");
+      menuIcon.classList.toggle("active");
+    }
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      
+      if (!mobileMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+        mobileMenu.classList.remove("active");
+        menuIcon.classList.remove("active");
+      }
+    });
+
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // يمكنك إضافة المزيد من الكتب هنا باستخدام JavaScript
+    const booksData = [
+      {
+        category: "الفيزياء",
+        title: "الفيزياء العملية",
+        author: "أ. سامي محمد",
+        link: "https://example.com/physics-book1.pdf"
+      },
+      // يمكنك إضافة المزيد من الكتب هنا
+    ];
+
+    // دالة لإضافة الكتب ديناميكياً
+    function addBooks() {
+      // يمكنك تنفيذ هذه الدالة لتحميل الكتب من مصدر خارجي
+    }
+    
+    // Initialize functions
+    window.onload = function() {
+      addBooks();
+    };
+  </script>
+</body>
+  </html>
