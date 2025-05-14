@@ -15,69 +15,68 @@
     .nav-link:hover {
       color: #f1c40f;
     }
-    .side-nav { display: none; position: fixed; top: 0; left: 0; height: 100%; width: 250px; background-color: #f1c40f; padding-top: 60px; z-index: 10; }
-    .side-nav a { padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #000; display: block; transition: 0.3s; }
-    .side-nav a:hover { color: #f1c40f; }
-    .side-nav .close-btn { position: absolute; top: 0; right: 25px; font-size: 36px; }
+    .section-link {
+      transition: transform 0.3s ease;
+    }
+    .section-link:hover {
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body class="bg-yellow-200 min-h-screen flex flex-col">
+
   <!-- Header -->
   <header class="bg-yellow-600 text-white p-4 shadow-md flex justify-between items-center">
     <h1 class="text-2xl font-bold">🎓 ثانوية بلس</h1>
-    <div class="space-x-4 space-x-reverse">
+    <nav class="space-x-4 space-x-reverse">
       <a href="login.html" class="nav-link hover:underline hover-effect">تسجيل الدخول</a>
-      <a href="register.html" class="nav-link hover:underline hover-effect">إنشاء حساب</a>
-      <span class="text-white cursor-pointer" onclick="openNav()">☰</span>
+      <a href="signup.html" class="nav-link hover:underline hover-effect">إنشاء حساب</a>
+    </nav>
+    <!-- Menu Icon -->
+    <div class="lg:hidden">
+      <button id="menu-button" class="text-white text-3xl">
+        ☰
+      </button>
     </div>
   </header>
 
-  <!-- Sidebar (Side Navigation) -->
-  <div id="myNav" class="side-nav">
-    <a href="javascript:void(0)" class="close-btn" onclick="closeNav()">&times;</a>
-    <a href="books.html">الكتب</a>
-    <a href="exams.html">الامتحانات</a>
-    <a href="study-plan.html">خطة المذاكرة</a>
-    <a href="about.html">عن المنصة</a>
-  </div>
+  <!-- Timer Section -->
+  <section class="text-center bg-yellow-100 py-4" id="exam-timer">
+    <h2 class="text-xl font-semibold mb-2">⏳ الوقت المتبقي على امتحانات الثانوية العامة:</h2>
+    <div id="countdown" class="text-2xl font-bold text-yellow-800"></div>
+  </section>
 
   <!-- Main Content -->
-  <main class="flex-1 p-4">
+  <main class="flex-1 p-4 grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+
+    <!-- Sidebar with Sections -->
+    <aside class="bg-white p-4 rounded-2xl shadow hidden lg:block">
+      <h3 class="text-lg font-semibold mb-2">📚 الأقسام</h3>
+      <ul class="space-y-2">
+        <li><a href="books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">الكتب 📝</a></li>
+        <li><a href="exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">الامتحانات 📑</a></li>
+        <li><a href="study-plan.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">خطة المذاكرة 🗓️</a></li>
+        <li><a href="about.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">عن المنصة 💻</a></li>
+      </ul>
+    </aside>
+
+    <!-- Content Section -->
     <section class="bg-white p-4 rounded-2xl shadow">
       <h3 class="text-lg font-semibold mb-2">📖 عن المنصة</h3>
-      <p>منصة ثانوية بلس تهدف إلى تقديم الدعم الكامل للطلاب في جميع الأقسام من خلال مواد تعليمية، امتحانات تجريبية، وموارد أخرى لمساعدتهم في التفوق والنجاح في امتحانات الثانوية العامة.</p>
+      <p class="hover-effect">منصة ثانوية بلس تهدف إلى تقديم الدعم الكامل للطلاب في جميع الأقسام من خلال مواد تعليمية، امتحانات تجريبية، وموارد أخرى لمساعدتهم في التفوق والنجاح في امتحانات الثانوية العامة.</p>
     </section>
 
-    <section class="text-center bg-yellow-100 py-4">
-      <h2 class="text-xl font-semibold mb-2">⏳ الوقت المتبقي على امتحانات الثانوية العامة 2025:</h2>
-      <div id="countdown" class="text-2xl font-bold text-yellow-800"></div>
+    <!-- Sections (Books, Exams, Study Plan) -->
+    <section class="bg-white p-4 rounded-2xl shadow">
+      <h3 class="text-lg font-semibold mb-2">📚 الأقسام الرئيسية</h3>
+      <ul class="space-y-2">
+        <li><a href="books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">الكتب 📝</a></li>
+        <li><a href="exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">الامتحانات 📑</a></li>
+        <li><a href="study-plan.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">خطة المذاكرة 🗓️</a></li>
+        <li><a href="about.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect section-link">عن المنصة 💻</a></li>
+      </ul>
     </section>
 
-    <section class="grid grid-cols-2 sm:grid-cols-1 gap-4 mt-4">
-      <!-- قسم الكتب -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:transform hover:scale-105 hover:bg-yellow-300">
-        <h3 class="text-lg font-semibold">📚 قسم الكتب</h3>
-        <p>كتب المراجعة وكتب جميع المواد لكل السنوات.</p>
-      </div>
-
-      <!-- قسم الامتحانات -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:transform hover:scale-105 hover:bg-yellow-300">
-        <h3 class="text-lg font-semibold">📝 قسم الامتحانات</h3>
-        <p>امتحانات تجريبية للمواد على مدار السنوات الدراسية.</p>
-      </div>
-
-      <!-- قسم خطة المذاكرة -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:transform hover:scale-105 hover:bg-yellow-300">
-        <h3 class="text-lg font-semibold">🗓️ خطة المذاكرة</h3>
-        <p>خطة متكاملة لتنظيم أوقات المذاكرة والإنجاز.</p>
-      </div>
-
-      <!-- قسم عن المنصة -->
-      <div class="bg-white p-4 rounded-2xl shadow hover:transform hover:scale-105 hover:bg-yellow-300">
-        <h3 class="text-lg font-semibold">📖 عن المنصة</h3>
-        <p>تعرف على رسالتنا وأهدافنا في دعم الطلاب.</p>
-      </div>
-    </section>
   </main>
 
   <!-- Footer -->
@@ -86,33 +85,28 @@
   </footer>
 
   <script>
-    // Countdown Timer
     const countdown = document.getElementById("countdown");
     const examDate = new Date("2025-06-01T08:00:00").getTime();
+
     function updateTimer() {
       const now = new Date().getTime();
       const distance = examDate - now;
+
       if (distance < 0) {
         countdown.innerText = "بدأت الامتحانات!";
         return;
       }
+
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
       countdown.innerText = `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
     }
+
     setInterval(updateTimer, 1000);
     updateTimer();
-
-    // Open and close the sidebar
-    function openNav() {
-      document.getElementById("myNav").style.width = "250px";
-    }
-
-    function closeNav() {
-      document.getElementById("myNav").style.width = "0";
-    }
   </script>
+
 </body>
 </html>
