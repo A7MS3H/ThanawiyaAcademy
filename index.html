@@ -12,68 +12,94 @@
       transform: translateY(-5px);
       transition: transform 0.3s ease-in-out;
     }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      height: 100%;
+      width: 250px;
+      background-color: #fbbf24; /* لون أصفر */
+      overflow-x: hidden;
+      transition: 0.3s;
+      padding-top: 60px;
+      z-index: 1000;
+    }
+    .sidebar a {
+      padding: 8px 8px 8px 32px;
+      text-decoration: none;
+      font-size: 25px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .sidebar a:hover {
+      color: #fbbf24;
+      background-color: white;
+    }
+    .sidebar .closebtn {
+      position: absolute;
+      top: 0;
+      right: 25px;
+      font-size: 36px;
+      margin-left: 50px;
+    }
   </style>
 </head>
-<body class="bg-yellow-200 min-h-screen flex flex-col">
-  <!-- Header -->
-  <header class="bg-yellow-600 text-white p-4 shadow-md flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🎓 ثانوية بلس</h1>
-    <nav class="space-x-4 space-x-reverse">
-      <a href="login.html" class="hover:underline hover-effect">تسجيل الدخول</a>
-      <a href="signup.html" class="hover:underline hover-effect">إنشاء حساب</a>
-      <a href="books.html" class="hover:underline hover-effect">قسم الكتب</a>
-      <a href="exams.html" class="hover:underline hover-effect">الامتحانات</a>
-      <a href="about.html" class="hover:underline hover-effect">عن المنصة</a>
-    </nav>
-  </header>
+<body class="bg-yellow-200">
 
-  <!-- Timer Section -->
-  <section class="text-center bg-yellow-100 py-4">
-    <h2 class="text-xl font-semibold mb-2">⏳ الوقت المتبقي على امتحانات الثانوية العامة:</h2>
-    <div id="countdown" class="text-2xl font-bold text-yellow-800"></div>
-  </section>
+  <!-- زر الأيقونة (☰) لفتح القائمة الجانبية -->
+  <div class="bg-yellow-600 text-white p-4 fixed top-0 left-0 right-0 z-50 flex justify-between">
+    <span class="text-2xl cursor-pointer" onclick="openNav()">&#9776;</span>
+    <h1 class="text-xl font-bold">ثانوية بلس</h1>
+  </div>
 
-  <!-- Main Content -->
-  <main class="flex-1 p-4 grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
-    <section class="bg-white p-4 rounded-2xl shadow">
-      <h3 class="text-lg font-semibold mb-2">📚 الأقسام</h3>
-      <ul class="space-y-2">
-        <li><a href="books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">قسم الكتب</a></li>
-        <li><a href="exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">الامتحانات</a></li>
-        <li><a href="study-plan.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">خطة المذاكرة</a></li>
-      </ul>
+  <!-- القائمة الجانبية -->
+  <div id="mySidebar" class="sidebar">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#books">الكتب</a>
+    <a href="#exams">الامتحانات</a>
+    <a href="#study-plan">خطة المذاكرة</a>
+    <a href="#about">عن المنصة</a>
+  </div>
+
+  <!-- محتوى الصفحة -->
+  <div class="p-6 mt-16">
+    <section id="books" class="mb-8">
+      <h2 class="text-2xl font-bold">📚 الكتب</h2>
+      <p>هنا تجد جميع الكتب الخاصة بالثانوية العامة.</p>
     </section>
 
-    <!-- About Us -->
-    <section class="bg-white p-4 rounded-2xl shadow">
-      <h3 class="text-lg font-semibold mb-2">📖 عن المنصة</h3>
-      <p>منصة ثانوية بلس تهدف إلى تقديم الدعم الكامل للطلاب في جميع الأقسام من خلال مواد تعليمية، امتحانات تجريبية، وموارد أخرى لمساعدتهم في التفوق والنجاح في امتحانات الثانوية العامة.</p>
+    <section id="exams" class="mb-8">
+      <h2 class="text-2xl font-bold">📝 الامتحانات</h2>
+      <p>هنا تجد جميع الامتحانات الخاصة بالثانوية العامة.</p>
     </section>
-  </main>
 
-  <!-- Footer -->
+    <section id="study-plan" class="mb-8">
+      <h2 class="text-2xl font-bold">📅 خطة المذاكرة</h2>
+      <p>هنا تجد خطة المذاكرة المفيدة لك في دراستك.</p>
+    </section>
+
+    <section id="about" class="mb-8">
+      <h2 class="text-2xl font-bold">💬 عن المنصة</h2>
+      <p>تعرف أكثر عن منصة "ثانوية بلس".</p>
+    </section>
+  </div>
+
   <footer class="bg-yellow-600 text-white p-4 text-center">
     <p>جميع الحقوق محفوظة &copy; ثانوية بلس 2025</p>
   </footer>
 
   <script>
-    const countdown = document.getElementById("countdown");
-    const examDate = new Date("2025-06-01T08:00:00").getTime();
-    function updateTimer() {
-      const now = new Date().getTime();
-      const distance = examDate - now;
-      if (distance < 0) {
-        countdown.innerText = "بدأت الامتحانات!";
-        return;
-      }
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-      countdown.innerText = `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
+    // وظيفة فتح القائمة الجانبية
+    function openNav() {
+      document.getElementById("mySidebar").style.left = "0";
     }
-    setInterval(updateTimer, 1000);
-    updateTimer();
+
+    // وظيفة إغلاق القائمة الجانبية
+    function closeNav() {
+      document.getElementById("mySidebar").style.left = "-250px";
+    }
   </script>
+
 </body>
 </html>
