@@ -19,3 +19,15 @@ const firebaseConfig = {
 // تهيئة التطبيق
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);  // تفعيل ميزة التوثيق
+import { getFirestore, collection, getDocs } from "firebase/firestore";
+
+const db = getFirestore();
+
+async function fetchExams() {
+  const examsSnapshot = await getDocs(collection(db, "exams"));
+  const examsList = examsSnapshot.docs.map(doc => doc.data());
+  console.log(examsList);
+  // يمكنك استخدام هذا البيانات في الصفحة لعرض الامتحانات
+}
+
+fetchExams();
