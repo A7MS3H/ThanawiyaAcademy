@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <title>إنشاء حساب</title>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+</head>
+<body>
+  <h1>إنشاء حساب</h1>
+  <input type="email" id="email" placeholder="البريد الإلكتروني" required>
+  <input type="password" id="password" placeholder="كلمة المرور" required>
+  <button id="signUpBtn">إنشاء حساب</button>
+
+  <script src="firebase-config.js"></script>
+  <script>
+    const signUpBtn = document.getElementById('signUpBtn');
+
+    signUpBtn.addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // إنشاء حساب جديد عبر Firebase
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          alert("تم إنشاء الحساب بنجاح");
+          window.location.href = "login.html"; // إعادة توجيه إلى صفحة تسجيل الدخول بعد إنشاء الحساب
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          alert(`خطأ: ${errorMessage}`); // عرض رسالة الخطأ إذا فشل إنشاء الحساب
+        });
+    });
+  </script>
+</body>
+</html>
