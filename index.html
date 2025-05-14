@@ -5,140 +5,75 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ثانوية بلس</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="firebase-config.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    /* تخصيص بعض التنسيقات لتكون الواجهة ثابتة */
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-    header {
-      background-color: #fbbf24;
-      padding: 15px;
-      color: white;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 15px;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    .sidebar {
-      width: 250px;
-      position: fixed;
-      top: 0;
-      left: 0;
-      background-color: #fbbf24;
-      color: white;
-      height: 100%;
-      padding-top: 20px;
-      display: none;
-    }
-    .sidebar a {
-      padding: 10px 20px;
-      text-decoration: none;
-      color: white;
-      display: block;
-    }
-    .sidebar a:hover {
-      background-color: #f59e0b;
-    }
-    .sidebar-toggle {
-      display: inline-block;
-      cursor: pointer;
-      font-size: 25px;
-    }
-    main {
-      margin-left: 260px;
-      padding: 20px;
+    body { font-family: 'Cairo', sans-serif; }
+    .hover-effect:hover {
+      transform: translateY(-5px);
+      transition: transform 0.3s ease-in-out;
     }
   </style>
 </head>
-<body>
-
-  <!-- Header with Sidebar Toggle -->
-  <header>
-    <h1>🎓 ثانوية بلس</h1>
-    <nav>
-      <a href="#" onclick="toggleSidebar()">☰</a>
-      <a href="login.html">تسجيل الدخول</a>
-      <a href="signup.html">إنشاء حساب</a>
+<body class="bg-yellow-200 min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-yellow-600 text-white p-4 shadow-md flex justify-between items-center">
+    <h1 class="text-2xl font-bold">🎓 ثانوية بلس</h1>
+    <nav class="space-x-4 space-x-reverse">
+      <a href="login.html" class="hover:underline hover-effect">تسجيل الدخول</a>
+      <a href="signup.html" class="hover:underline hover-effect">إنشاء حساب</a>
+      <a href="books.html" class="hover:underline hover-effect">قسم الكتب</a>
+      <a href="exams.html" class="hover:underline hover-effect">الامتحانات</a>
+      <a href="about.html" class="hover:underline hover-effect">عن المنصة</a>
     </nav>
   </header>
 
-  <!-- Sidebar -->
-  <div id="sidebar" class="sidebar">
-    <a href="index.html" onclick="showSection('home')">الصفحة الرئيسية</a>
-    <a href="books.html" onclick="showSection('books')">الكتب</a>
-    <a href="exams.html" onclick="showSection('exams')">الامتحانات</a>
-    <a href="study-plan.html" onclick="showSection('study-plan')">خطة المذاكرة</a>
-    <a href="about.html" onclick="showSection('about')">عن المنصة</a>
-  </div>
+  <!-- Timer Section -->
+  <section class="text-center bg-yellow-100 py-4">
+    <h2 class="text-xl font-semibold mb-2">⏳ الوقت المتبقي على امتحانات الثانوية العامة:</h2>
+    <div id="countdown" class="text-2xl font-bold text-yellow-800"></div>
+  </section>
 
   <!-- Main Content -->
-  <main id="main-content">
-    <section id="home" class="content-section">
-      <h2>مرحبا بك في منصة ثانوية بلس</h2>
-      <p>منصة توفر لك كل ما تحتاجه لمساعدتك في النجاح في امتحانات الثانوية العامة.</p>
-    </section>
-
-    <section id="books" class="content-section" style="display:none;">
-      <h2>📚 الكتب</h2>
-      <p>هنا يمكنك الاطلاع على قائمة الكتب الدراسية للمراحل المختلفة.</p>
-      <ul>
-        <li>مادة الرياضيات</li>
-        <li>مادة الفيزياء</li>
-        <li>مادة الكيمياء</li>
-        <!-- أضف المزيد من المواد حسب الحاجة -->
+  <main class="flex-1 p-4 grid gap-4 lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1">
+    <section class="bg-white p-4 rounded-2xl shadow">
+      <h3 class="text-lg font-semibold mb-2">📚 الأقسام</h3>
+      <ul class="space-y-2">
+        <li><a href="books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">قسم الكتب</a></li>
+        <li><a href="exams.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">الامتحانات</a></li>
+        <li><a href="study-plan.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400 hover-effect">خطة المذاكرة</a></li>
       </ul>
     </section>
 
-    <section id="exams" class="content-section" style="display:none;">
-      <h2>🧑‍🏫 الامتحانات</h2>
-      <p>هنا يمكنك الاطلاع على الامتحانات الخاصة بكل مادة.</p>
-      <ul>
-        <li>امتحان مادة الرياضيات</li>
-        <li>امتحان مادة الفيزياء</li>
-        <li>امتحان مادة الكيمياء</li>
-        <!-- أضف المزيد من الامتحانات حسب الحاجة -->
-      </ul>
-    </section>
-
-    <section id="study-plan" class="content-section" style="display:none;">
-      <h2>🗓️ خطة المذاكرة</h2>
-      <p>قم بإنشاء خطة مذاكرة لتنظيم وقتك قبل الامتحانات.</p>
-    </section>
-
-    <section id="about" class="content-section" style="display:none;">
-      <h2>📖 عن المنصة</h2>
-      <p>منصة ثانوية بلس تهدف إلى مساعدة الطلاب في جميع المراحل الدراسية والتقديم لهم الدعم الكامل للوصول إلى النجاح في امتحانات الثانوية العامة.</p>
+    <!-- About Us -->
+    <section class="bg-white p-4 rounded-2xl shadow">
+      <h3 class="text-lg font-semibold mb-2">📖 عن المنصة</h3>
+      <p>منصة ثانوية بلس تهدف إلى تقديم الدعم الكامل للطلاب في جميع الأقسام من خلال مواد تعليمية، امتحانات تجريبية، وموارد أخرى لمساعدتهم في التفوق والنجاح في امتحانات الثانوية العامة.</p>
     </section>
   </main>
 
+  <!-- Footer -->
+  <footer class="bg-yellow-600 text-white p-4 text-center">
+    <p>جميع الحقوق محفوظة &copy; ثانوية بلس 2025</p>
+  </footer>
+
   <script>
-    // وظيفة لإظهار أو إخفاء القائمة الجانبية
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.display = sidebar.style.display === "block" ? "none" : "block";
+    const countdown = document.getElementById("countdown");
+    const examDate = new Date("2025-06-01T08:00:00").getTime();
+    function updateTimer() {
+      const now = new Date().getTime();
+      const distance = examDate - now;
+      if (distance < 0) {
+        countdown.innerText = "بدأت الامتحانات!";
+        return;
+      }
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      countdown.innerText = `${days} يوم، ${hours} ساعة، ${minutes} دقيقة، ${seconds} ثانية`;
     }
-
-    // وظيفة لعرض الأقسام المختلفة
-    function showSection(section) {
-      const sections = document.querySelectorAll('.content-section');
-      sections.forEach(s => s.style.display = 'none');  // إخفاء جميع الأقسام
-      document.getElementById(section).style.display = 'block';  // إظهار القسم المحدد
-    }
-
-    // العرض الافتراضي للقسم الرئيسي
-    showSection('home');
+    setInterval(updateTimer, 1000);
+    updateTimer();
   </script>
-  
 </body>
 </html>
