@@ -1,65 +1,160 @@
-<!DOCTYPE html><html lang="ar"><head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!DOCTYPE html><html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ثانوية بلس</title>
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-</head><body class="bg-yellow-50 text-gray-800">  <!-- زر القائمة الجانبية -->  <button id="menu-toggle" class="fixed top-4 right-4 z-50 p-2 bg-yellow-600 text-white rounded-md focus:outline-none">
-    <span id="menu-icon">☰</span>
-  </button>  <!-- القائمة الجانبية -->  <aside id="sidebar" class="fixed top-0 right-0 w-64 h-full bg-white shadow-lg transform translate-x-full transition-transform duration-300 z-40">
-    <nav class="p-4 space-y-4">
-      <h2 class="text-xl font-bold border-b pb-2 mb-2">الأقسام</h2>
-      <a href="books.html" class="block p-2 rounded hover:bg-yellow-100">📚 الكتب</a>
-      <a href="exams.html" class="block p-2 rounded hover:bg-yellow-100">📝 الامتحانات</a>
-      <a href="study-plan.html" class="block p-2 rounded hover:bg-yellow-100">🗓️ خطة المذاكرة</a>
-      <a href="about.html" class="block p-2 rounded hover:bg-yellow-100">ℹ️ عن المنصة</a>
-    </nav>
-  </aside>  <!-- رأس الصفحة -->  <header class="bg-yellow-500 text-white py-6 text-center shadow">
-    <h1 class="text-3xl font-bold">ثانوية بلس</h1>
-  </header>  <!-- معلومات عن المنصة -->  <section class="text-center mt-6 px-4">
-    <h2 class="text-2xl font-semibold text-yellow-700 mb-2">نبذة عن المنصة</h2>
-    <p class="text-lg leading-relaxed max-w-xl mx-auto">منصة تعليمية مجانية مخصصة لطلاب الثانوية العامة تحتوي على كتب وامتحانات وخطة مذاكرة منظمة للوصول لأعلى الدرجات.</p>
-  </section>  <!-- التايمر -->  <section class="text-center mt-4 mb-6">
-    <div class="inline-block bg-yellow-200 px-4 py-2 rounded shadow">
-      <p class="text-lg font-semibold">متبقي على امتحانات تالتة ثانوي:</p>
-      <p id="countdown" class="text-xl text-yellow-700 font-bold"></p>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Cairo', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    header {
+      background-color: #1e88e5;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-icons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+    .menu-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: #fff;
+      box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      padding: 2rem 1rem;
+      z-index: 1000;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .sidebar a {
+      display: block;
+      margin-bottom: 1rem;
+      color: #333;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .hero {
+      text-align: center;
+      padding: 2rem;
+    }
+    .hero h1 {
+      font-size: 2rem;
+      color: #1e88e5;
+    }
+    .countdown {
+      background-color: #fff;
+      margin: 1rem auto;
+      padding: 1rem;
+      width: fit-content;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      font-weight: bold;
+      color: #d32f2f;
+    }
+    .sections {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .section {
+      background-color: #fff;
+      padding: 1rem;
+      width: 80%;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      cursor: pointer;
+    }
+    .section:hover {
+      background-color: #e3f2fd;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #1e88e5;
+      color: white;
+      margin-top: 2rem;
+    }
+    .btns {
+      display: flex;
+      gap: 1rem;
+    }
+    .btns a {
+      background-color: white;
+      color: #1e88e5;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="menu-icon" onclick="toggleSidebar()">☰</div>
+    <div class="logo">ثانوية بلس</div>
+    <div class="btns">
+      <a href="#login">تسجيل دخول</a>
+      <a href="#signup">إنشاء حساب</a>
     </div>
-  </section>  <!-- الأقسام الرئيسية -->  <section class="grid gap-6 px-4 md:grid-cols-2 lg:grid-cols-4 mb-10">
-    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer" onclick="location.href='books.html'">
-      <h3 class="text-xl font-bold mb-2">📚 الكتب</h3>
-      <p class="text-gray-600">جميع الكتب الدراسية والكتب الخارجية ومراجعات السنوات السابقة.</p>
-    </div>
-    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer" onclick="location.href='exams.html'">
-      <h3 class="text-xl font-bold mb-2">📝 الامتحانات</h3>
-      <p class="text-gray-600">امتحانات لجميع المواد والسنوات لتدريبك الكامل.</p>
-    </div>
-    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer" onclick="location.href='study-plan.html'">
-      <h3 class="text-xl font-bold mb-2">🗓️ خطة المذاكرة</h3>
-      <p class="text-gray-600">جدول مذاكرة منظم لتحقيق أفضل استغلال للوقت.</p>
-    </div>
-    <div class="bg-white p-4 rounded-lg shadow hover:shadow-lg transition cursor-pointer" onclick="location.href='about.html'">
-      <h3 class="text-xl font-bold mb-2">ℹ️ عن المنصة</h3>
-      <p class="text-gray-600">تعرف أكثر على هدف ورسالة المنصة.</p>
-    </div>
-  </section>  <!-- سكريبت القائمة الجانبية -->  <script>
-    const menuToggle = document.getElementById('menu-toggle');
-    const sidebar = document.getElementById('sidebar');
-    const menuIcon = document.getElementById('menu-icon');
-
-    menuToggle.addEventListener('click', () => {
-      sidebar.classList.toggle('translate-x-full');
-      menuIcon.textContent = sidebar.classList.contains('translate-x-full') ? '☰' : '✖';
-    });
-  </script>  <!-- سكريبت التايمر -->  <script>
-    const countdown = document.getElementById('countdown');
-    const examDate = new Date("2025-06-01").getTime();
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = examDate - now;
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      countdown.textContent = `${days} يوم`;
+  </header>  <div class="sidebar" id="sidebar">
+    <a href="#books">📚 الكتب</a>
+    <a href="#exams">📝 الامتحانات</a>
+    <a href="#plan">🗓️ خطة المذاكرة</a>
+    <a href="#about">ℹ️ عن المنصة</a>
+  </div>  <section class="hero">
+    <div class="countdown" id="countdown"></div>
+    <h1>منصة ثانوية بلس التعليمية</h1>
+    <p>كل ما يحتاجه طلاب الثانوية العامة في مكان واحد، من كتب ومراجعات إلى خطة مذاكرة وامتحانات شاملة.</p>
+  </section>  <section class="sections">
+    <div class="section" onclick="location.href='#books'">📚 قسم الكتب - يشمل الكتب الدراسية والمراجعات النهائية</div>
+    <div class="section" onclick="location.href='#exams'">📝 قسم الامتحانات - امتحانات كل السنوات مرتبة حسب المادة</div>
+    <div class="section" onclick="location.href='#plan'">🗓️ خطة المذاكرة - نظام مذاكرة شامل يساعدك في تنظيم وقتك</div>
+    <div class="section" onclick="location.href='#about'">ℹ️ عن المنصة - معلومات عن فريق العمل ورسالة المنصة</div>
+  </section>  <footer>
+    جميع الحقوق محفوظة © ثانوية بلس 2025
+  </footer>  <script>
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('active');
     }
 
+    function updateCountdown() {
+      const targetDate = new Date("2025-06-01");
+      const now = new Date();
+      const diff = targetDate - now;
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      document.getElementById("countdown").innerText = `عدد الأيام المتبقية حتى امتحانات تالتة ثانوي: ${days} يوم`;
+    }
     updateCountdown();
-    setInterval(updateCountdown, 1000 * 60 * 60);
-  </script></body></html>
+    setInterval(updateCountdown, 86400000);
+  </script></body>
+</html>
