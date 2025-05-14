@@ -2,191 +2,201 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ثانوية بلس</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: #f1c40f; /* اللون الأصفر الغامق */
-      color: #2c3e50; /* اللون الأسود للنصوص */
-      font-family: Arial, sans-serif;
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: #f5c518;
+      color: #000;
     }
-
     header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 15px 30px;
-      background-color: #f39c12; /* اللون الأصفر الغامق */
+      padding: 1rem;
+      background-color: #fff;
+      border-bottom: 2px solid #000;
     }
-
-    header h1 {
-      margin: 0;
-      color: white;
-      font-size: 30px;
-    }
-
-    .header-links {
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #000;
       display: flex;
-      gap: 20px;
-      color: white;
-      font-size: 18px;
+      align-items: center;
     }
-
-    .menu-icon {
-      display: none;
-      font-size: 30px;
+    .tagline {
+      background-color: #000;
+      color: #fff;
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      margin-right: 0.5rem;
+      font-size: 0.9rem;
+    }
+    .auth-buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
+    .auth-buttons button {
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 5px;
+      background-color: #000;
+      color: #fff;
+      font-weight: bold;
       cursor: pointer;
-      color: white;
+      transition: background-color 0.3s ease;
     }
-
-    /* قائمة جانبية */
-    .sidebar {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 250px;
-      height: 100%;
-      background-color: #f39c12;
-      padding-top: 60px;
+    .auth-buttons button:hover {
+      background-color: #333;
     }
-
-    .sidebar a {
-      padding: 8px 8px 8px 32px;
-      text-decoration: none;
-      font-size: 25px;
-      color: #2c3e50;
-      display: block;
-      transition: 0.3s;
+    .menu-icon {
+      font-size: 1.5rem;
+      cursor: pointer;
     }
-
-    .sidebar a:hover {
-      background-color: #ddd;
+    .section {
+      text-align: center;
+      padding: 2rem 1rem;
     }
-
-    /* الأقسام */
-    .section-container {
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+    .timer {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #000;
+      margin-bottom: 1.5rem;
+    }
+    .section-divider {
+      width: 80%;
+      margin: 1rem auto;
+      border-top: 2px solid #000;
+    }
+    .cards {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      margin: 50px 0;
+      gap: 1rem;
     }
-
-    .section-card {
-      background-color: white;
-      padding: 20px;
-      margin: 15px;
+    .card {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #000;
+      border-radius: 12px;
       width: 250px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      padding: 1rem;
       text-align: center;
-      transition: transform 0.3s;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-
-    .section-card:hover {
-      transform: translateY(-10px);
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     }
-
-    .section-card h2 {
-      color: #f39c12;
+    .card .label {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      background-color: #000;
+      color: #fff;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
     }
-
-    .section-card p {
-      color: #2c3e50;
-    }
-
-    /* التايمر */
-    .timer {
-      text-align: center;
-      font-size: 20px;
-      margin-top: 20px;
-      color: white;
-      background-color: #2c3e50;
-      padding: 10px;
-      border-radius: 5px;
-    }
-
-    /* تعديل العرض في الشاشات الصغيرة */
-    @media screen and (max-width: 768px) {
-      .header-links {
-        display: none;
-      }
-
-      .menu-icon {
-        display: block;
-      }
-
-      .sidebar {
-        display: block;
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .auth-buttons {
+        flex-direction: column;
+        align-items: flex-start;
       }
     }
   </style>
 </head>
 <body>
-
-  <!-- الهيدر -->
   <header>
-    <h1>ثانوية بلس</h1>
-    <div class="header-links">
-      <a href="login.html">تسجيل الدخول</a>
-      <a href="signup.html">إنشاء حساب</a>
+    <div class="logo">
+      ثانوية بلس 
+      <span class="tagline">دليلك الشامل للثانوية العامة</span>
+    </div>
+    <div class="auth-buttons">
+      <button onclick="location.href='login.html'">تسجيل الدخول</button>
+      <button onclick="location.href='signup.html'">إنشاء حساب</button>
     </div>
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
   </header>
 
-  <!-- التايمر -->
-  <div class="timer">
-    <p>عدد الأيام المتبقية على امتحانات الثانوية العامة 2025: <span id="countdown"></span></p>
-  </div>
+  <div class="section-divider"></div>
 
-  <!-- القائمة الجانبية -->
-  <div class="sidebar" id="sidebar">
-    <a href="#">الكتب</a>
-    <a href="#">الامتحانات</a>
-    <a href="#">خطة المذاكرة</a>
-    <a href="#">عن المنصة</a>
-  </div>
+  <section class="section">
+    <div class="timer" id="exam-timer"></div>
+    <h2>نبذة عن المنصة</h2>
+    <p>منصة شاملة لطلاب الصف الثالث الثانوي، توفر لك كل ما تحتاجه من كتب وامتحانات وخطط مذاكرة.</p>
+  </section>
 
-  <!-- الأقسام -->
-  <div class="section-container">
-    <div class="section-card">
-      <h2>الكتب</h2>
-      <p>تحتوي على جميع الكتب لجميع المواد الدراسية مع تقسيمها حسب الصفوف الدراسية.</p>
+  <div class="section-divider"></div>
+
+  <section class="section">
+    <h2>أقسام الموقع</h2>
+    <div class="cards">
+      <div class="card" onclick="location.href='books.html'">
+        <h3>الكتب</h3>
+        <div class="label">كتب الوزارة + مراجعات</div>
+      </div>
+      <div class="card" onclick="location.href='exams.html'">
+        <h3>الامتحانات</h3>
+        <div class="label">سنوات سابقة</div>
+      </div>
+      <div class="card" onclick="location.href='plan.html'">
+        <h3>خطة المذاكرة</h3>
+        <div class="label">تنظيم وقتك</div>
+      </div>
+      <div class="card" onclick="location.href='about.html'">
+        <h3>عن المنصة</h3>
+        <div class="label">من نحن</div>
+      </div>
+      <div class="card" onclick="location.href='videos.html'">
+        <h3>الفيديوهات التعليمية</h3>
+        <div class="label">شرح المواد الثانوية</div>
+      </div>
     </div>
-    <div class="section-card">
-      <h2>الامتحانات</h2>
-      <p>اختبارات سابقة وجميع الامتحانات التي يمكنك الاستعداد لها حسب المواد.</p>
-    </div>
-    <div class="section-card">
-      <h2>خطة المذاكرة</h2>
-      <p>وضع خطة للمذاكرة للمساعدة في الاستعداد للامتحانات.</p>
-    </div>
-    <div class="section-card">
-      <h2>عن المنصة</h2>
-      <p>تعرف أكثر على منصة ثانوية بلس وأهدافها وميزاتها.</p>
-    </div>
-  </div>
+  </section>
+
+  <footer style="text-align:center; padding:1rem;">
+    <p>حقوق الملكية محفوظة &copy; 2023 ثانوية بلس</p>
+  </footer>
 
   <script>
-    // التايمر
-    const countdownElement = document.getElementById('countdown');
-    const examDate = new Date('2025-06-01').getTime(); // تحديد تاريخ الامتحانات
-
-    setInterval(function() {
-      const currentDate = new Date().getTime();
-      const remainingTime = examDate - currentDate;
-      
-      const days = Math.floor(remainingTime / (1000 * 60 * 60 * 24));
-      countdownElement.innerText = days + " يوم";
-    }, 1000);
-
-    // قائمة الجانبية
     function toggleMenu() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.style.display = sidebar.style.display === "block" ? "none" : "block";
+      alert("هنا سيتم عرض قائمة الأقسام في الإصدارات القادمة.");
     }
-  </script>
 
+    function startCountdown() {
+      const examDate = new Date("2025-06-15T08:00:00").getTime();
+      const timerElement = document.getElementById("exam-timer");
+
+      const x = setInterval(function () {
+        const now = new Date().getTime();
+        const distance = examDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+        timerElement.innerHTML = `متبقي على الامتحانات: ${days} يوم، ${hours} ساعة، ${minutes} دقيقة`;
+
+        if (distance < 0) {
+          clearInterval(x);
+          timerElement.innerHTML = "بدأت امتحانات الثانوية العامة";
+        }
+      }, 1000);
+    }
+
+    startCountdown();
+  </script>
 </body>
 </html>
