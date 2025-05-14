@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>قسم الكتب</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>الكتب - ثانوية بلس</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-<body class="bg-yellow-200">
-  <header class="bg-yellow-600 text-white p-4 shadow-md">
-    <h1 class="text-2xl font-bold">🎓 قسم الكتب</h1>
+<body>
+  <header>
+    <h1>ثانوية بلس</h1>
+    <span id="menu-btn">☰</span>
   </header>
 
-  <!-- Main Content -->
-  <main class="p-4">
-    <section class="bg-white p-4 rounded-2xl shadow">
-      <h3 class="text-lg font-semibold mb-2">📚 اختر المادة:</h3>
-      <ul class="space-y-2">
-        <li><a href="math-books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">رياضيات</a></li>
-        <li><a href="chemistry-books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">كيمياء</a></li>
-        <li><a href="physics-books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">فيزياء</a></li>
-        <li><a href="literature-books.html" class="block bg-yellow-300 p-2 rounded text-center hover:bg-yellow-400">أدب</a></li>
-      </ul>
-    </section>
-  </main>
+  <nav id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id="close-btn">&times;</a>
+    <a href="books.html">الكتب</a>
+    <a href="exams.html">الامتحانات</a>
+    <a href="plan.html">خطة المذاكرة</a>
+    <a href="about.html">عن المنصة</a>
+  </nav>
 
-  <footer class="bg-yellow-600 text-white p-4 text-center">
-    <p>جميع الحقوق محفوظة &copy; ثانوية بلس 2025</p>
-  </footer>
+  <div class="content">
+    <h2>الكتب</h2>
+    <div class="books-section">
+      <h3>كتب الوزارة</h3>
+      <ul>
+        <li>رياضيات</li>
+        <li>علوم</li>
+        <li>لغة عربية</li>
+        <!-- وهكذا -->
+      </ul>
+      <h3>مراجعات نهائية</h3>
+      <ul>
+        <li>مراجعة في الكيمياء</li>
+        <li>مراجعة في الفيزياء</li>
+        <!-- ... -->
+      </ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
