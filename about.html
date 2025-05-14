@@ -2,57 +2,44 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>نبذة عن المنصة - ثانوية بلس</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    body { font-family: 'Cairo', sans-serif; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>عن المنصة - ثانوية بلس</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-<body class="bg-yellow-50 text-gray-800">
-
-  <!-- Header -->
-  <header class="bg-yellow-600 text-white p-4 flex justify-between items-center">
-    <h1 class="text-2xl font-bold">🎓 ثانوية بلس</h1>
-    <nav class="space-x-4 space-x-reverse">
-      <a href="index.html" class="hover:underline">الرئيسية</a>
-      <a href="about.html" class="hover:underline font-bold">نبذة عن المنصة</a>
-      <a href="login.html" class="hover:underline">تسجيل الدخول</a>
-    </nav>
+<body>
+  <!-- الهيدر -->
+  <header>
+    <h1>ثانوية بلس</h1>
+    <span id="menu-btn">☰</span>
   </header>
 
-  <!-- About Section -->
-  <section class="max-w-4xl mx-auto p-6 bg-white rounded-2xl shadow mt-8">
-    <h2 class="text-3xl font-bold text-yellow-600 mb-4">من نحن؟</h2>
-    <p class="text-lg leading-loose mb-4">
-      منصة <strong>ثانوية بلس</strong> هي منصة تعليمية مجانية موجهة لطلاب الثانوية العامة، تهدف إلى تسهيل الوصول إلى جميع المصادر التعليمية من مكان واحد.
-    </p>
+  <!-- القائمة الجانبية -->
+  <nav id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" id="close-btn">&times;</a>
+    <a href="index.html">الرئيسية</a>
+    <a href="books.html">الكتب</a>
+    <a href="exams.html">الامتحانات</a>
+    <a href="plan.html">خطة المذاكرة</a>
+    <a href="about.html">عن المنصة</a>
+  </nav>
 
-    <h3 class="text-2xl font-semibold text-yellow-500 mt-6 mb-2">🎯 هدفنا</h3>
-    <p class="text-lg mb-4">
-      تقديم تجربة تعليمية منظمة، مبسطة، وآمنة تساعد الطلاب في الوصول إلى الكتب، الامتحانات، وخطط المذاكرة بسهولة.
-    </p>
+  <!-- محتوى الصفحة -->
+  <div class="content">
+    <h2>عن منصة ثانوية بلس</h2>
 
-    <h3 class="text-2xl font-semibold text-yellow-500 mt-6 mb-2">📚 ماذا نقدم؟</h3>
-    <ul class="list-disc list-inside text-lg mb-4">
-      <li>جميع كتب الثانوية العامة حسب الصفوف الدراسية.</li>
-      <li>كتب المراجعة النهائية لجميع المواد.</li>
-      <li>امتحانات سابقة منظمة حسب السنة والمادة.</li>
-      <li>نظام تسجيل دخول آمن للطلاب.</li>
-      <li>لوحة تحكم للإدارة والمشرفين.</li>
+    <p>📚 منصة تعليمية مجانية تهدف إلى مساعدة طلاب الصف الثالث الثانوي على الوصول لكل مصادر المذاكرة بسهولة:</p>
+
+    <ul>
+      <li>✔️ كتب الوزارة + كتب خارجية</li>
+      <li>✔️ امتحانات سنوات سابقة</li>
+      <li>✔️ خطة مذاكرة يومية</li>
+      <li>✔️ واجهة بسيطة وسريعة الاستخدام</li>
+      <li>✔️ تحديث مستمر للمحتوى</li>
     </ul>
 
-    <h3 class="text-2xl font-semibold text-yellow-500 mt-6 mb-2">🧑‍💻 لمن المنصة؟</h3>
-    <p class="text-lg">
-      لكل طالب في الثانوية العامة يبحث عن مصدر شامل، موثوق، ومجاني للاستعداد للامتحانات بكل احترافية.
-    </p>
-  </section>
+    <p>✨ المنصة مجانية بالكامل ومفتوحة لجميع الطلبة في أي وقت.</p>
+  </div>
 
-  <!-- Footer -->
-  <footer class="bg-yellow-600 text-white text-center p-4 mt-10">
-    جميع الحقوق محفوظة &copy; ثانوية بلس 2025
-  </footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
