@@ -1,65 +1,55 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
+  <!-- نفس محتوى head الموجود في login.html -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>إنشاء حساب - ثانوية بلس</title>
-  <!-- روابط CSS كما في الصفحة الرئيسية -->
-  <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/auth.css" />
+  <title>ثانوية بلس - إنشاء حساب</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- نفس الأنماط من login.html -->
+  <style>
+    /* نفس أنماط login.html */
+  </style>
 </head>
-<body class="auth-page">
-  <div class="auth-container">
-    <div class="auth-logo">
-      <a href="index.html">
-        <h1><i class="fas fa-graduation-cap"></i> ثانوية بلس</h1>
-      </a>
-    </div>
-    
-    <div class="auth-form">
-      <h2>إنشاء حساب جديد</h2>
-      
-      <form id="signupForm">
-        <div class="form-group">
-          <label for="fullname">الاسم بالكامل</label>
-          <input type="text" id="fullname" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="email">البريد الإلكتروني</label>
-          <input type="email" id="email" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="password">كلمة المرور</label>
-          <input type="password" id="password" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="confirm-password">تأكيد كلمة المرور</label>
-          <input type="password" id="confirm-password" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="grade">الصف الدراسي</label>
-          <select id="grade" required>
-            <option value="">اختر الصف</option>
-            <option value="first">الصف الأول الثانوي</option>
-            <option value="second">الصف الثاني الثانوي</option>
-            <option value="third">الصف الثالث الثانوي</option>
-          </select>
-        </div>
-        
-        <button type="submit" class="auth-btn">إنشاء حساب</button>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      ثانوية بلس
+      <span style="background-color: var(--secondary); color: var(--white); padding: 0.3rem 0.6rem; border-radius: 8px; font-size: 0.9rem; margin-right: 0.5rem;">دليلك للثانوية العامة</span>
+    </a>
+    <a href="login.html" style="padding: 0.6rem 1.2rem; border: 2px solid var(--secondary); border-radius: 8px; font-family: 'Cairo', sans-serif; font-weight: 600; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem; text-decoration: none; background-color: transparent; color: var(--secondary);">تسجيل الدخول</a>
+  </header>
+  
+  <div class="main">  	
+    <input type="checkbox" id="chk" aria-hidden="true" checked>
+    <div class="signup">
+      <form>
+        <label for="chk" aria-hidden="true">إنشاء حساب</label>
+        <input type="text" name="username" placeholder="اسم المستخدم" required>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <button>تسجيل</button>
       </form>
-      
-      <div class="auth-links">
-        <p>لديك حساب بالفعل؟ <a href="login.html">تسجيل الدخول</a></p>
-      </div>
+    </div>
+
+    <div class="login">
+      <form>
+        <label for="chk" aria-hidden="true">تسجيل الدخول</label>
+        <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+        <input type="password" name="password" placeholder="كلمة المرور" required>
+        <button>دخول</button>
+      </form>
     </div>
   </div>
 
-  <script src="js/script.js"></script>
-  <script src="js/auth.js"></script>
+  <footer>
+    <p>حقوق الملكية محفوظة &copy; <span id="year"></span> ثانوية بلس</p>
+  </footer>
+
+  <script>
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
