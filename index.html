@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ثانوية أكاديمي - منصة تعليم الثانوية العامة</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -12,8 +14,9 @@
       --secondary: #000;
       --white: #fff;
       --text: #333;
-      --hover: #333;
+      --hover: #573b8a;
       --section-bg: rgba(255, 255, 255, 0.95);
+      --active-btn: #6d44b8;
     }
     
     * {
@@ -91,6 +94,9 @@
       cursor: pointer;
       transition: all 0.3s ease;
       font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
     
     .login-btn {
@@ -103,6 +109,11 @@
       color: var(--white);
     }
     
+    .login-btn:active {
+      transform: scale(0.95);
+      background-color: var(--active-btn);
+    }
+    
     .signup-btn {
       background-color: var(--secondary);
       color: var(--white);
@@ -113,101 +124,85 @@
       color: var(--secondary);
     }
     
-    /* Main Login/Signup Form */
-    .auth-container {
-      width: 90%;
-      max-width: 400px;
-      margin: 2rem auto;
-      background: var(--section-bg);
-      overflow: hidden;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      border: 2px solid var(--secondary);
-    }
-    
-    #auth-chk {
-      display: none;
-    }
-    
-    .signup-form {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      padding: 2rem;
-    }
-    
-    .auth-label {
-      color: var(--secondary);
-      font-size: 1.8em;
-      justify-content: center;
-      display: flex;
-      margin: 30px 0;
-      font-weight: bold;
-      cursor: pointer;
-      transition: .5s ease-in-out;
-    }
-    
-    .auth-input {
-      width: 100%;
-      height: 40px;
-      background: #f0f0f0;
-      justify-content: center;
-      display: flex;
-      margin: 20px 0;
-      padding: 10px 15px;
-      border: 1px solid #ddd;
-      outline: none;
-      border-radius: 8px;
-      font-family: 'Cairo', sans-serif;
-      font-size: 1rem;
-    }
-    
-    .auth-btn {
-      width: 100%;
-      height: 45px;
-      margin: 25px 0;
-      justify-content: center;
-      display: block;
+    .signup-btn:active {
+      transform: scale(0.95);
+      background-color: var(--active-btn);
       color: var(--white);
-      background: var(--secondary);
-      font-size: 1.1em;
-      font-weight: bold;
-      outline: none;
-      border: none;
-      border-radius: 8px;
-      transition: .2s ease-in;
+    }
+    
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
       cursor: pointer;
-      font-family: 'Cairo', sans-serif;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
     }
     
-    .auth-btn:hover {
-      background: var(--hover);
+    .menu-icon.active {
+      transform: rotate(90deg);
     }
     
-    .login-form {
-      height: auto;
-      background: #f8f8f8;
+    /* Top Content Container */
+    .top-container {
+      max-width: 1200px;
+      width: 90%;
+      margin: 2rem auto;
+      background-color: var(--section-bg);
+      border: 2px solid var(--secondary);
       border-radius: 15px;
-      transform: translateY(-180px);
-      transition: .8s ease-in-out;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Timer Section */
+    .timer-section {
       padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--secondary);
     }
     
-    .login-form .auth-label {
+    .timer-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
       color: var(--secondary);
-      transform: scale(.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
     
-    #auth-chk:checked ~ .login-form {
-      transform: translateY(-500px);
+    .timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      max-width: 700px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
     }
     
-    #auth-chk:checked ~ .login-form .auth-label {
-      transform: scale(1);	
+    /* About Section */
+    .about-section {
+      padding: 2rem;
+      text-align: center;
     }
     
-    #auth-chk:checked ~ .signup-form .auth-label {
-      transform: scale(.8);
+    .about-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      font-weight: 500;
     }
     
     /* Main Sections */
@@ -221,6 +216,22 @@
       padding: 2rem;
       text-align: center;
       box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .sections-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+      z-index: 10;
+    }
+    
+    .sections-toggle.active {
+      transform: rotate(90deg);
     }
     
     .main-sections h2 {
@@ -265,6 +276,21 @@
       overflow: hidden;
     }
     
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .card:hover::before {
+      left: 100%;
+    }
+    
     .card:hover {
       transform: translateY(-5px);
       box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
@@ -272,9 +298,20 @@
       color: var(--white);
     }
     
+    .card:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
     .card h3 {
       margin-bottom: 1rem;
       font-size: 1.3rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
     }
     
     .card .label {
@@ -285,6 +322,9 @@
       padding: 0.3rem 0.8rem;
       border-radius: 6px;
       width: fit-content;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
     }
     
     .card:hover .label {
@@ -300,66 +340,1084 @@
       margin-top: auto;
     }
     
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
     @media (max-width: 768px) {
-      .auth-container, .main-sections {
-        width: 95%;
+      header {
+        padding: 1rem;
       }
       
-      .auth-label {
-        font-size: 1.5em;
-        margin: 20px 0;
+      .auth-buttons {
+        display: none;
+      }
+      
+      .menu-icon {
+        display: block;
       }
       
       .cards {
         grid-template-columns: 1fr;
       }
+      
+      .timer-section,
+      .about-section,
+      .main-sections {
+        padding: 1.5rem;
+      }
+      
+      .timer {
+        font-size: 1.2rem;
+      }
+      
+      .top-container {
+        border-radius: 10px;
+      }
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 70%;
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 0 0 0 10px;
+      padding: 1rem;
+      z-index: 99;
+      box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-menu.active {
+      display: block;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    
+    .mobile-menu button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu button:active {
+      transform: scale(0.95);
+    }
+    
+    /* Sections Menu */
+    .sections-menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 1rem;
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 0 0 10px 10px;
+      padding: 1rem;
+      width: 250px;
+      z-index: 98;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sections-menu.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .sections-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sections-menu a:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding-right: 1.5rem;
+    }
+    
+    .sections-menu a:active {
+      transform: scale(0.98);
+    }
+    
+    .sections-menu a:last-child {
+      border-bottom: none;
     }
   </style>
 </head>
 <body>
   <header>
     <a href="index.html" class="logo">
-      ثانوية أكاديمي 
-      <span class="sticker">دليلك للثانوية العامة</span>
+      <i class="fas fa-graduation-cap"></i>
+      ثانوية أكاديمي
+      <span class="sticker">دليلك الأكاديمي</span>
     </a>
     <div class="auth-buttons">
-      <button class="login-btn" onclick="location.href='#login'">تسجيل الدخول</button>
-      <button class="signup-btn" onclick="location.href='#signup'">إنشاء حساب</button>
+      <button class="login-btn" onclick="handleAuthClick('login')">
+        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+      </button>
+      <button class="signup-btn" onclick="handleAuthClick('signup')">
+        <i class="fas fa-user-plus"></i> إنشاء حساب
+      </button>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
     </div>
   </header>
-
-  <!-- Login/Signup Form Section -->
-  <div class="auth-container" id="auth-section">  	
-    <input type="checkbox" id="auth-chk" aria-hidden="true" checked>
-    <div class="signup-form">
-      <form id="signup">
-        <label for="auth-chk" class="auth-label" aria-hidden="true">إنشاء حساب</label>
-        <input type="text" name="username" class="auth-input" placeholder="اسم المستخدم" required>
-        <input type="email" name="email" class="auth-input" placeholder="البريد الإلكتروني" required>
-        <input type="password" name="password" class="auth-input" placeholder="كلمة المرور" required>
-        <button type="submit" class="auth-btn">تسجيل</button>
-      </form>
-    </div>
-
-    <div class="login-form">
-      <form id="login">
-        <label for="auth-chk" class="auth-label" aria-hidden="true">تسجيل الدخول</label>
-        <input type="email" name="email" class="auth-input" placeholder="البريد الإلكتروني" required>
-        <input type="password" name="password" class="auth-input" placeholder="كلمة المرور" required>
-        <button type="submit" class="auth-btn">دخول</button>
-      </form>
-    </div>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="login-btn" onclick="handleAuthClick('login')">
+      <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+    </button>
+    <button class="signup-btn" onclick="handleAuthClick('signup')">
+      <i class="fas fa-user-plus"></i> إنشاء حساب
+    </button>
   </div>
 
-  <!-- Main Content Sections -->
-  <section class="main-sections">
-    <h2><i class="fas fa-th-large" style="margin-left: 10px;"></i> أقسام المنصة التعليمية</h2>
-    <div class="section-divider"></div>
-    
-    <div class="cards">
-      <div class="card" onclick="location.href='#login'">
-        <h3><i class="fas fa-book" style="margin-left: 8px;"></i> الكتب الخارجية</h3>
-        <div class="label">أفضل المراجع الدراسية</div>
+  <main style="padding: 1rem;">
+    <!-- Top Container with Timer and About -->
+    <div class="top-container">
+      <!-- Timer Section -->
+      <section class="timer-section">
+        <h2><i class="fas fa-clock" style="margin-left: 10px;"></i> العد التنازلي للامتحانات</h2>
+        <div class="timer" id="exam-timer"></div>
+      </section>
+      
+      <!-- About Section -->
+      <section class="about-section">
+        <h2><i class="fas fa-info-circle" style="margin-left: 10px;"></i> نبذة عن المنصة</h2>
+        <p>منصة "ثانوية أكاديمي" هي بيئة تعليمية متكاملة مصممة خصيصًا لطلاب الثانوية العامة، تقدم محتوى تعليميًا متميزًا يشمل الكتب الخارجية، مناهج الوزارة، نماذج الامتحانات، خطط مذاكرة، وفيديوهات تعليمية لتسهيل رحلة التحصيل العلمي.</p>
+        <button class="signup-btn" onclick="handleAuthClick('signup')" style="margin-top: 1rem;">
+          <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> انضم إلينا الآن
+        </button>
+      </section>
+    </div>
+
+    <!-- Main Content Sections -->
+    <section class="main-sections">
+      <i class="fas fa-th-list sections-toggle" id="sectionsToggle" onclick="toggleSectionsMenu()"></i>
+      <div class="sections-menu" id="sectionsMenu">
+        <a href="#external-books"><i class="fas fa-book-open"></i> الكتب الخارجية</a>
+        <a href="#ministry-library"><i class="fas fa-university"></i> مكتبة الوزارة</a>
+        <a href="#exams"><i class="fas fa-clipboard-list"></i> الامتحانات</a>
+        <a href="#plan"><i class="fas fa-tasks"></i> خطة المذاكرة</a>
+        <a href="#videos"><i class="fas fa-film"></i> الفيديوهات التعليمية</a>
+        <a href="#about-us"><i class="fas fa-users-cog"></i> من نحن</a>
       </div>
-      <div class="card" onclick="location.href='#login'">
-        <h3><i class="fas fa-book-open
+      
+      <h2><i class="fas fa-th-large" style="margin-left: 10px;"></i> أقسام المنصة التعليمية</h2>
+      <div class="section-divider"></div>
+      
+      <div class="cards">
+        <div class="card" onclick="navigateToSection('external-books')">
+          <h3><i class="fas fa-book-reader"></i> الكتب الخارجية</h3>
+          <div class="label">أفضل المراجع الدراسية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('ministry-library')">
+          <h3><i class="fas fa-university"></i> مكتبة الوزارة</h3>
+          <div class="label">المناهج الرسمية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('exams')">
+          <h3><i class="fas fa-clipboard-check"></i> الامتحانات</h3>
+          <div class="label">سنوات سابقة</div>
+        </div>
+        <div class="card" onclick="navigateToSection('plan')">
+          <h3><i class="fas fa-calendar-alt"></i> خطة المذاكرة</h3>
+          <div class="label">تنظيم وقتك</div>
+        </div>
+        <div class="card" onclick="navigateToSection('videos')">
+          <h3><i class="fas fa-video"></i> الفيديوهات التعليمية</h3>
+          <div class="label">شرح المواد الثانوية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('about-us')">
+          <h3><i class="fas fa-users"></i> من نحن</h3>
+          <div class="label">فريق ثانوية أكاديمي</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>حقوق الملكية محفوظة &copy; <span id="year"></span> ثانوية أكاديمي</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      mobileMenu.classList.toggle("active");
+      menuIcon.classList.toggle("active");
+      
+      // Close sections menu if open
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      if (sectionsMenu.classList.contains("active")) {
+        sectionsMenu.classList.remove("active");
+        document.getElementById("sectionsToggle").classList.remove("active");
+      }
+    }
+    
+    // Sections Menu Toggle
+    function toggleSectionsMenu() {
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      const sectionsToggle = document.getElementById("sectionsToggle");
+      sectionsMenu.classList.toggle("active");
+      sectionsToggle.classList.toggle("active");
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.remove("active");
+        document.querySelector(".menu-icon").classList.remove("active");
+      }
+    }
+    
+    // Close menus when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      const sectionsToggle = document.getElementById("sectionsToggle");
+      
+      if (!mobileMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+        mobileMenu.classList.remove("active");
+        menuIcon.classList.remove("active");
+      }
+      
+      if (!sectionsMenu.contains(event.target) && !sectionsToggle.contains(event.target)) {
+        sectionsMenu.classList.remove("active");
+        sectionsToggle.classList.remove("active");
+      }
+    });
+
+    // Enhanced Countdown Timer
+    function startCountdown() {
+      const examDate = new Date("2025-06-15T08:00:00").getTime();
+      const timerElement = document.getElementById("exam-timer");
+
+      const updateTimer = function() {
+        const now = new Date().getTime();
+        const distance = examDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerElement.innerHTML = `
+          <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${days}</span>
+              <span style="font-size: 0.9rem;">يوم</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${hours}</span>
+              <span style="font-size: 0.9rem;">ساعة</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${minutes}</span>
+              <span style="font-size: 0.9rem;">دقيقة</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${seconds}</span>
+              <span style="font-size: 0.9rem;">ثانية</span>
+            </div>
+          </div>
+        `;
+
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          timerElement.innerHTML = `
+            <div style="color: #d9534f; font-size: 1.5rem; padding: 1rem;">
+              <i class="fas fa-check-circle" style="margin-left: 8px;"></i>
+              بدأت امتحانات الثانوية العامة! تمنياتنا لكم بالتوفيق
+            </div>
+          `;
+          timerElement.style.backgroundColor = "rgba(217, 83, 79, 0.1)";
+        }
+      };
+
+      updateTimer(); // Initial call
+      const timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Handle auth button clicks with animation
+    function handleAuthClick(type) {
+      const btn = event.currentTarget;
+      btn.style.transform = 'scale(0.95)';
+      btn.style.backgroundColor = type === 'login' ? 'var(--active-btn)' : 'var(--hover)';
+      
+      setTimeout(() => {
+        btn.style.transform = '';
+        btn.style.backgroundColor = type === 'login' ? 'transparent' : 'var(--secondary)';
+        if (type === 'login') {
+          window.location.href = 'login.html';
+        } else {
+          window.location.href = 'signup.html';
+        }
+      }, 200);
+    }
+
+    // Handle section navigation with animation
+    function navigateToSection(section) {
+      const card = event.currentTarget;
+      card.style.transform = 'translateY(2px) scale(0.98)';
+      card.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+      
+      setTimeout(() => {
+        window.location.href = `${section}.html`;
+      }, 300);
+    }
+
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Initialize functions
+    window.onload = function() {
+      startCountdown();
+    };
+  </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ثانوية أكاديمي - منصة تعليم الثانوية العامة</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #f5c518;
+      --secondary: #000;
+      --white: #fff;
+      --text: #333;
+      --hover: #573b8a;
+      --section-bg: rgba(255, 255, 255, 0.95);
+      --active-btn: #6d44b8;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      margin: 0;
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--primary);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: url('https://images.unsplash.com/photo-1523050854058-8df90110c9f1?q=80&w=1470&auto=format&fit=crop');
+      background-size: cover;
+      background-attachment: fixed;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background-color: var(--white);
+      border-bottom: 2px solid var(--secondary);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      border: 2px solid var(--secondary);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .logo:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .sticker {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 0.3rem 0.6rem;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      margin-right: 0.5rem;
+    }
+    
+    .auth-buttons {
+      display: flex;
+      gap: 0.8rem;
+    }
+    
+    .auth-buttons button {
+      padding: 0.6rem 1.2rem;
+      border: 2px solid var(--secondary);
+      border-radius: 8px;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .login-btn {
+      background-color: transparent;
+      color: var(--secondary);
+    }
+    
+    .login-btn:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .login-btn:active {
+      transform: scale(0.95);
+      background-color: var(--active-btn);
+    }
+    
+    .signup-btn {
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .signup-btn:hover {
+      background-color: transparent;
+      color: var(--secondary);
+    }
+    
+    .signup-btn:active {
+      transform: scale(0.95);
+      background-color: var(--active-btn);
+      color: var(--white);
+    }
+    
+    .menu-icon {
+      display: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      padding: 0.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .menu-icon.active {
+      transform: rotate(90deg);
+    }
+    
+    /* Top Content Container */
+    .top-container {
+      max-width: 1200px;
+      width: 90%;
+      margin: 2rem auto;
+      background-color: var(--section-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Timer Section */
+    .timer-section {
+      padding: 2rem;
+      text-align: center;
+      border-bottom: 2px solid var(--secondary);
+    }
+    
+    .timer-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      max-width: 700px;
+      margin: 0 auto;
+      transition: all 0.3s ease;
+    }
+    
+    /* About Section */
+    .about-section {
+      padding: 2rem;
+      text-align: center;
+    }
+    
+    .about-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .about-section p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      max-width: 800px;
+      margin: 0 auto 1.5rem;
+      font-weight: 500;
+    }
+    
+    /* Main Sections */
+    .main-sections {
+      background-color: var(--section-bg);
+      border: 2px solid var(--secondary);
+      border-radius: 15px;
+      margin: 2rem auto;
+      max-width: 1200px;
+      width: 90%;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      position: relative;
+    }
+    
+    .sections-toggle {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--secondary);
+      transition: transform 0.3s ease;
+      z-index: 10;
+    }
+    
+    .sections-toggle.active {
+      transform: rotate(90deg);
+    }
+    
+    .main-sections h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .section-divider {
+      width: 80%;
+      height: 2px;
+      background-color: var(--secondary);
+      margin: 1.5rem auto;
+      opacity: 0.2;
+    }
+    
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    
+    .card {
+      background-color: var(--white);
+      color: var(--text);
+      border: 2px solid var(--secondary);
+      border-radius: 12px;
+      padding: 1.5rem 1rem;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 150px;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.1), transparent);
+      transition: 0.5s;
+    }
+    
+    .card:hover::before {
+      left: 100%;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+      background-color: var(--secondary);
+      color: var(--white);
+    }
+    
+    .card:active {
+      transform: translateY(0) scale(0.98);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .card h3 {
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+    
+    .card .label {
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 0.3rem 0.8rem;
+      border-radius: 6px;
+      width: fit-content;
+      position: relative;
+      z-index: 1;
+      transition: all 0.3s ease;
+    }
+    
+    .card:hover .label {
+      background-color: var(--white);
+      color: var(--secondary);
+    }
+    
+    footer {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding: 1.5rem;
+      text-align: center;
+      margin-top: auto;
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      header {
+        padding: 1rem;
+      }
+      
+      .auth-buttons {
+        display: none;
+      }
+      
+      .menu-icon {
+        display: block;
+      }
+      
+      .cards {
+        grid-template-columns: 1fr;
+      }
+      
+      .timer-section,
+      .about-section,
+      .main-sections {
+        padding: 1.5rem;
+      }
+      
+      .timer {
+        font-size: 1.2rem;
+      }
+      
+      .top-container {
+        border-radius: 10px;
+      }
+    }
+    
+    /* Mobile Menu */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 80px;
+      right: 0;
+      width: 70%;
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 0 0 0 10px;
+      padding: 1rem;
+      z-index: 99;
+      box-shadow: -5px 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mobile-menu.active {
+      display: block;
+      animation: slideIn 0.3s ease-out;
+    }
+    
+    @keyframes slideIn {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    
+    .mobile-menu button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+    
+    .mobile-menu button:active {
+      transform: scale(0.95);
+    }
+    
+    /* Sections Menu */
+    .sections-menu {
+      display: none;
+      position: absolute;
+      top: 70px;
+      left: 1rem;
+      background-color: var(--white);
+      border: 2px solid var(--secondary);
+      border-radius: 0 0 10px 10px;
+      padding: 1rem;
+      width: 250px;
+      z-index: 98;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .sections-menu.active {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+    
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    .sections-menu a {
+      display: block;
+      padding: 0.8rem 1rem;
+      color: var(--text);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .sections-menu a:hover {
+      background-color: var(--secondary);
+      color: var(--white);
+      padding-right: 1.5rem;
+    }
+    
+    .sections-menu a:active {
+      transform: scale(0.98);
+    }
+    
+    .sections-menu a:last-child {
+      border-bottom: none;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo">
+      <i class="fas fa-graduation-cap"></i>
+      ثانوية أكاديمي
+      <span class="sticker">دليلك الأكاديمي</span>
+    </a>
+    <div class="auth-buttons">
+      <button class="login-btn" onclick="handleAuthClick('login')">
+        <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+      </button>
+      <button class="signup-btn" onclick="handleAuthClick('signup')">
+        <i class="fas fa-user-plus"></i> إنشاء حساب
+      </button>
+    </div>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <i class="fas fa-bars"></i>
+    </div>
+  </header>
+  
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="login-btn" onclick="handleAuthClick('login')">
+      <i class="fas fa-sign-in-alt"></i> تسجيل الدخول
+    </button>
+    <button class="signup-btn" onclick="handleAuthClick('signup')">
+      <i class="fas fa-user-plus"></i> إنشاء حساب
+    </button>
+  </div>
+
+  <main style="padding: 1rem;">
+    <!-- Top Container with Timer and About -->
+    <div class="top-container">
+      <!-- Timer Section -->
+      <section class="timer-section">
+        <h2><i class="fas fa-clock" style="margin-left: 10px;"></i> العد التنازلي للامتحانات</h2>
+        <div class="timer" id="exam-timer"></div>
+      </section>
+      
+      <!-- About Section -->
+      <section class="about-section">
+        <h2><i class="fas fa-info-circle" style="margin-left: 10px;"></i> نبذة عن المنصة</h2>
+        <p>منصة "ثانوية أكاديمي" هي بيئة تعليمية متكاملة مصممة خصيصًا لطلاب الثانوية العامة، تقدم محتوى تعليميًا متميزًا يشمل الكتب الخارجية، مناهج الوزارة، نماذج الامتحانات، خطط مذاكرة، وفيديوهات تعليمية لتسهيل رحلة التحصيل العلمي.</p>
+        <button class="signup-btn" onclick="handleAuthClick('signup')" style="margin-top: 1rem;">
+          <i class="fas fa-arrow-left" style="margin-right: 8px;"></i> انضم إلينا الآن
+        </button>
+      </section>
+    </div>
+
+    <!-- Main Content Sections -->
+    <section class="main-sections">
+      <i class="fas fa-th-list sections-toggle" id="sectionsToggle" onclick="toggleSectionsMenu()"></i>
+      <div class="sections-menu" id="sectionsMenu">
+        <a href="#external-books"><i class="fas fa-book-open"></i> الكتب الخارجية</a>
+        <a href="#ministry-library"><i class="fas fa-university"></i> مكتبة الوزارة</a>
+        <a href="#exams"><i class="fas fa-clipboard-list"></i> الامتحانات</a>
+        <a href="#plan"><i class="fas fa-tasks"></i> خطة المذاكرة</a>
+        <a href="#videos"><i class="fas fa-film"></i> الفيديوهات التعليمية</a>
+        <a href="#about-us"><i class="fas fa-users-cog"></i> من نحن</a>
+      </div>
+      
+      <h2><i class="fas fa-th-large" style="margin-left: 10px;"></i> أقسام المنصة التعليمية</h2>
+      <div class="section-divider"></div>
+      
+      <div class="cards">
+        <div class="card" onclick="navigateToSection('external-books')">
+          <h3><i class="fas fa-book-reader"></i> الكتب الخارجية</h3>
+          <div class="label">أفضل المراجع الدراسية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('ministry-library')">
+          <h3><i class="fas fa-university"></i> مكتبة الوزارة</h3>
+          <div class="label">المناهج الرسمية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('exams')">
+          <h3><i class="fas fa-clipboard-check"></i> الامتحانات</h3>
+          <div class="label">سنوات سابقة</div>
+        </div>
+        <div class="card" onclick="navigateToSection('plan')">
+          <h3><i class="fas fa-calendar-alt"></i> خطة المذاكرة</h3>
+          <div class="label">تنظيم وقتك</div>
+        </div>
+        <div class="card" onclick="navigateToSection('videos')">
+          <h3><i class="fas fa-video"></i> الفيديوهات التعليمية</h3>
+          <div class="label">شرح المواد الثانوية</div>
+        </div>
+        <div class="card" onclick="navigateToSection('about-us')">
+          <h3><i class="fas fa-users"></i> من نحن</h3>
+          <div class="label">فريق ثانوية أكاديمي</div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>حقوق الملكية محفوظة &copy; <span id="year"></span> ثانوية أكاديمي</p>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    function toggleMenu() {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      mobileMenu.classList.toggle("active");
+      menuIcon.classList.toggle("active");
+      
+      // Close sections menu if open
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      if (sectionsMenu.classList.contains("active")) {
+        sectionsMenu.classList.remove("active");
+        document.getElementById("sectionsToggle").classList.remove("active");
+      }
+    }
+    
+    // Sections Menu Toggle
+    function toggleSectionsMenu() {
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      const sectionsToggle = document.getElementById("sectionsToggle");
+      sectionsMenu.classList.toggle("active");
+      sectionsToggle.classList.toggle("active");
+      
+      // Close mobile menu if open
+      const mobileMenu = document.getElementById("mobileMenu");
+      if (mobileMenu.classList.contains("active")) {
+        mobileMenu.classList.remove("active");
+        document.querySelector(".menu-icon").classList.remove("active");
+      }
+    }
+    
+    // Close menus when clicking outside
+    document.addEventListener('click', function(event) {
+      const mobileMenu = document.getElementById("mobileMenu");
+      const menuIcon = document.querySelector(".menu-icon");
+      const sectionsMenu = document.getElementById("sectionsMenu");
+      const sectionsToggle = document.getElementById("sectionsToggle");
+      
+      if (!mobileMenu.contains(event.target) && !menuIcon.contains(event.target)) {
+        mobileMenu.classList.remove("active");
+        menuIcon.classList.remove("active");
+      }
+      
+      if (!sectionsMenu.contains(event.target) && !sectionsToggle.contains(event.target)) {
+        sectionsMenu.classList.remove("active");
+        sectionsToggle.classList.remove("active");
+      }
+    });
+
+    // Enhanced Countdown Timer
+    function startCountdown() {
+      const examDate = new Date("2025-06-15T08:00:00").getTime();
+      const timerElement = document.getElementById("exam-timer");
+
+      const updateTimer = function() {
+        const now = new Date().getTime();
+        const distance = examDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        timerElement.innerHTML = `
+          <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${days}</span>
+              <span style="font-size: 0.9rem;">يوم</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${hours}</span>
+              <span style="font-size: 0.9rem;">ساعة</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${minutes}</span>
+              <span style="font-size: 0.9rem;">دقيقة</span>
+            </div>
+            <div style="display: flex; flex-direction: column; align-items: center; min-width: 70px;">
+              <span style="font-size: 2.5rem; font-weight: bold; color: var(--secondary);">${seconds}</span>
+              <span style="font-size: 0.9rem;">ثانية</span>
+            </div>
+          </div>
+        `;
+
+        if (distance < 0) {
+          clearInterval(timerInterval);
+          timerElement.innerHTML = `
+            <div style="color: #d9534f; font-size: 1.5rem; padding: 1rem;">
+              <i class="fas fa-check-circle" style="margin-left: 8px;"></i>
+              بدأت امتحانات الثانوية العامة! تمنياتنا لكم بالتوفيق
+            </div>
+          `;
+          timerElement.style.backgroundColor = "rgba(217, 83, 79, 0.1)";
+        }
+      };
+
+      updateTimer(); // Initial call
+      const timerInterval = setInterval(updateTimer, 1000);
+    }
+
+    // Handle auth button clicks with animation
+    function handleAuthClick(type) {
+      const btn = event.currentTarget;
+      btn.style.transform = 'scale(0.95)';
+      btn.style.backgroundColor = type === 'login' ? 'var(--active-btn)' : 'var(--hover)';
+      
+      setTimeout(() => {
+        btn.style.transform = '';
+        btn.style.backgroundColor = type === 'login' ? 'transparent' : 'var(--secondary)';
+        if (type === 'login') {
+          window.location.href = 'login.html';
+        } else {
+          window.location.href = 'signup.html';
+        }
+      }, 200);
+    }
+
+    // Handle section navigation with animation
+    function navigateToSection(section) {
+      const card = event.currentTarget;
+      card.style.transform = 'translateY(2px) scale(0.98)';
+      card.style.boxShadow = '0 5px 10px rgba(0,0,0,0.1)';
+      
+      setTimeout(() => {
+        window.location.href = `${section}.html`;
+      }, 300);
+    }
+
+    // Set copyright year
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Initialize functions
+    window.onload = function() {
+      startCountdown();
+    };
+  </script>
+</body>
+</html>
