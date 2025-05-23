@@ -1,25 +1,25 @@
-<!-- صفحة المصادقة: auth.html -->
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <title>التسجيل - ثانوية أكاديمي</title>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+    <title>Modern Login Form</title>
     <style>
       body{
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        font-family: 'Cairo', sans-serif;
-        background: #000000;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      font-family: 'Jost', sans-serif;
+      background: #000000;
       }
       .main{
         width: 350px;
         height: 500px;
+        background: red;
         overflow: hidden;
         background: url("https://doc-08-2c-docs.googleusercontent.com/docs/securesc/68c90smiglihng9534mvqmq1946dmis5/fo0picsp1nhiucmc0l25s29respgpr4j/1631524275000/03522360960922298374/03522360960922298374/1Sx0jhdpEpnNIydS4rnN4kHSJtU1EyWka?e=view&authuser=0&nonce=gcrocepgbb17m&user=03522360960922298374&hash=tfhgbs86ka6divo3llbvp93mg4csvb38") no-repeat center/ cover;
         border-radius: 10px;
@@ -107,46 +107,36 @@
         bottom: 10px;
         width: 100%;
         text-align: center;
-        color: #ffffff;
+        color: #000000; /* تغيير اللون إلى أسود */
         font-size: 12px;
       }
-    </style>
-    <script>
-      // التحقق من نوع الطلب عند تحميل الصفحة
-      window.onload = function() {
-        const urlParams = new URLSearchParams(window.location.search);
-        const type = urlParams.get('type');
-        
-        if(type === 'login') {
-          document.getElementById('chk').checked = false;
-        } else {
-          document.getElementById('chk').checked = true;
-        }
+      .school-name {
+        color: #d4a916; /* اللون الأصفر الغامق */
       }
-    </script>
+    </style>
   </head>
   <body>
-    <div class="main">  	
+    <div class="main">    
       <input type="checkbox" id="chk" aria-hidden="true">
         <div class="signup">
           <form>
-            <label for="chk" aria-hidden="true">إنشاء حساب</label>
-            <input type="text" name="txt" placeholder="اسم المستخدم" required>
-            <input type="email" name="email" placeholder="البريد الإلكتروني" required>
-            <input type="password" name="pswd" placeholder="كلمة المرور" required>
-            <button>إنشاء حساب</button>
+            <label for="chk" aria-hidden="true">Sign up</label>
+            <input type="text" name="txt" placeholder="User name" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="pswd" placeholder="Password" required>
+            <button>Sign up</button>
           </form>
         </div>
 
         <div class="login">
           <form>
-            <label for="chk" aria-hidden="true">تسجيل الدخول</label>
-            <input type="email" name="email" placeholder="البريد الإلكتروني" required="">
-            <input type="password" name="pswd" placeholder="كلمة المرور" required="">
-            <button>تسجيل الدخول</button>
+            <label for="chk" aria-hidden="true">Login</label>
+            <input type="email" name="email" placeholder="Email" required="">
+            <input type="password" name="pswd" placeholder="Password" required="">
+            <button>Login</button>
           </form>
         </div>
-        <div class="copyright">حقوق الملكية محفوظة © 2024 ثانوية أكاديمي</div>
+        <div class="copyright">حقوق الملكية محفوظة © 2025 <span class="school-name">ثانوية أكاديمي</span></div>
     </div> 
   </body>
 </html>
