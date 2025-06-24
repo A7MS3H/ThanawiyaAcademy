@@ -32,33 +32,36 @@
       display: flex;
       flex-direction: column;
     }
-    /* باقي التنسيقات بدون تغيير حتى نهاية CSS */
+    .timer-section {
+      padding: 2rem;
+      text-align: center;
+      background-color: var(--section-bg);
+      border-bottom: 2px solid var(--secondary);
+    }
+    .timer-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      color: var(--secondary);
+    }
+    .timer {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--secondary);
+      padding: 1rem;
+      background-color: rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
   </style>
 </head>
 <body>
-  <!-- باقي الجسم كما هو -->
+  <section class="timer-section">
+    <h2><i class="fas fa-clock" style="margin-left: 10px;"></i> العد التنازلي للامتحانات</h2>
+    <div class="timer" id="exam-timer"></div>
+  </section>
 
   <script>
-    function toggleMenu(icon) {
-      icon.classList.toggle("active");
-      const mobileMenu = document.getElementById("mobileMenu");
-      mobileMenu.classList.toggle("active");
-    }
-    function handleLogoClick(event) {
-      event.preventDefault();
-      const logo = event.currentTarget;
-      logo.style.transform = 'scale(0.95)';
-      setTimeout(() => {
-        location.reload();
-      }, 300);
-    }
-    function navigateToSection(section) {
-      const card = event.currentTarget;
-      card.style.transform = 'translateY(2px) scale(0.98)';
-      setTimeout(() => {
-        window.location.href = `${section}.html`;
-      }, 300);
-    }
     function startCountdown() {
       const examDate = new Date("2025-07-10T12:30:00").getTime();
       const timerElement = document.getElementById("exam-timer");
@@ -108,7 +111,6 @@
       const timerInterval = setInterval(updateTimer, 1000);
     }
 
-    document.getElementById("year").textContent = new Date().getFullYear();
     window.onload = startCountdown;
   </script>
 </body>
